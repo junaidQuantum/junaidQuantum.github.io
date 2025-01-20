@@ -1,7 +1,6 @@
-## Junaid ur Rehman, Ph.D.
+# Publications
 
-
-## Journal Papers
+## Selected Journal Publications
 
 
 1. **J. ur Rehman**, S. Hong, S.-W. Lee, Y.-S. Kim, Y.-W. Cho, H. Jung, S. Moon, H. Shin, S.-W. Han, and H.-T. Lim, "Optimal strategy for multiple-phase estimation under practical measurement with multimode NOON states," Physical Review A, 106:032612, Sep. 2022. [[Link](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.106.032612){:target="_blank" rel="noopener"}]  
