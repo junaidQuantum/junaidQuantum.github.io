@@ -1,3 +1,7 @@
+---
+title: Publications
+---
+
 # Publications
 
 ## Selected Journal Publications
