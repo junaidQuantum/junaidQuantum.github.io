@@ -39,4 +39,4 @@ Information Processing*, vol. 20, no. 12, p. 397, Nov. 2021. [[Link](https://lin
 14. **J. ur Rehman**, S. Qaisar, Y. Jeong, and H. Shin,“Security of a control key in quantum key distribution,” *Modern Physics Letters B*, vol. 31, no. 11, pp. 1–12, Apr. 2017.  [[Link](https://www.worldscientific.com/doi/abs/10.1142/S0217984917501196){:target="_blank" rel="noopener"}] [[BibTeX](https://github.com/junaidQuantum/junaidQuantum.github.io/raw/gh-pages/files/bibs/17_RQJ_MPLB.bib){:target="_blank" rel="noopener"}]
 15. T. Bashir, I. Usman, and **J. ur Rehman**, “Secure digital watermarking using optimized improved spread spectrum and BCH coding for DIBR 3D-TV system,” *Multimedia Tools and Applications*, vol. 75, no. 13, pp. 7697–7713, Jul. 2016.  [[Link](https://link.springer.com/article/10.1007/s11042-015-2689-z){:target="_blank" rel="noopener"}] [[BibTeX](https://github.com/junaidQuantum/junaidQuantum.github.io/raw/gh-pages/files/bibs/16_BUR_MTA.bib){:target="_blank" rel="noopener"}]
 
-<span style="float:right">[[Go to top](#junaid-ur-rehman-phd)]</span>  
+<span style="float:right">[[Go to top](#publications)]</span>  
