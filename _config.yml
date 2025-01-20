@@ -4,9 +4,6 @@ markdown: kramdown
 
 
 theme: jekyll-theme-leap-day
-# Add navigation links
-header_pages:
-  - index.md
-  - publications.md
+
 
   
