@@ -8,7 +8,7 @@ title: Home
 **Assistant Professor**  <img align="right" src="files/photo.JPG" 
                                                          width = "95"
                                                          height = "100"/>  
-[Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"}
+[Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"} 
 King Fahd University of Petroleum and Minerals  
 Dhahran, Saudi Arabia  
 
