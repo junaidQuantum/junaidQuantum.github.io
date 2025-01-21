@@ -23,49 +23,12 @@ General research interests include fundamentals of <span style="color:blue"> **q
 - [Researchgate](https://www.researchgate.net/profile/Junaid-Ur-Rehman-3){:target="_blank" rel="noopener"}
 - [Scopus](https://www.scopus.com/authid/detail.uri?authorId=57193760138){:target="_blank" rel="noopener"} [<span style="color:red">Requires Subscription/Account!</span>]
 
-## Research Experience
-- **Research Scientist** <span style="float:right">January 2023 — October 2024</span>  
-Interdisciplinary Center for Security, Reliability and Trust   
-University of Luxembourg, Luxembourg  
-***Research Area:*** Quantum Information Sciences
-
-- **Research Associate** <span style="float:right">June 2022 — December 2022</span>  
-Interdisciplinary Center for Security, Reliability and Trust   
-University of Luxembourg, Luxembourg  
-***Research Area:*** Quantum Information Sciences  
-
-- **BK21 Research Professor and Postdoctoral Fellow** <span style="float:right">January 2021 — May 2022</span>  
-Department of Electronics and Information Convergence Engineering  
-Kyung Hee University, Korea  
-***Research Area:*** NISQ Computing, Quantum Communications  
-
-- **Postdoctoral Fellow** <span style="float:right">September 2020 — December 2020</span>  
-Center for Quantum Information  
-Korea Institute of Science and Technology (KIST), Korea  
-***Research Area:*** Experimental Quantum Metrology, NISQ Computing  
-
-- **Postdoctoral Fellow** <span style="float:right">September 2019 — August 2020</span>  
-Department of Electronics and Information Convergence Engineering  
-Kyung Hee University, Korea  
-***Research Area:*** Quantum Metrology, Quantum Communications  
-
-- **Research Associate** <span style="float:right">December 2013 — August 2014</span>  
-Center for Advanced Studies in Telecommunication (CAST)   
-COMSATS University Islamabad, Pakistan  
-***Research Area:*** Image Processing  
-
-<span style="float:right">[[Go to top](#junaid-ur-rehman-phd)]</span>  
-
-## Education
-- **Ph.D. in Electronic Engineering** <span style="float:right">September 2014 — August 2019</span>  
-Department of Electronic Engineering  
-Kyung Hee University, Korea  
-***Thesis Title:*** Dequantumization of Discrete Weyl Quantum Channels
-
-- **BE in Electrical Engineering** <span style="float:right">September 2009 — August 2013</span>  
-Department of Electrical Engineering  
-National University of Sciences and Technology (NUST), Pakistan  
-***Thesis Title:*** Multivariate PID Controlloer with HMI
+## Biography
+Junaid ur Rehman received the B.S. degree in Electrical Engineering from National University of Sciences and Technology (NUST), Islamabad, Pakistan, in 2013, and the Ph.D. degree in Electronic Engineering from Kyung Hee University (KHU), Yongin-si, Korea, in 2019.  
+	
+He worked as a researcher (Postdoctoral Fellow/Research Associate/Research Scientist) with various research groups including groups at KHU, Korea Institute of Science and Technology (KIST), and Signal Processing and Communications (SIGCOM) group of the University of Luxembourg. Currently, he is an assistant professor at the Department of Electrical Engineering at King Fahd University of Petroleum and Minerals, Saudi Arabia. His research interests include quantum information sciences including quantum communications, quantum computing, and quantum sensing.  
+	
+Dr. ur Rehman has served as a technical program committee member of multiple IEEE conferences including IEEE International Conference on Communications (ICC) and IEEE Global Communications Conference (Globecom). He has reviewed for numerous IEEE and non-IEEE conferences and journals. He was an Exemplary Reviewer for the IEEE Wireless Communications Letters in 2022.
 
 
 <span style="float:right">[[Go to top](#junaid-ur-rehman-phd)]</span>  
