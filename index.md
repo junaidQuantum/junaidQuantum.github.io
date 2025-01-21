@@ -6,8 +6,8 @@ title: Home
 
 
 **Assistant Professor**  <img align="right" src="files/junaid-photo-1.jpg" 
-                                                         width = "95"
-                                                         height = "100"/>  
+                                                         width = "100"
+                                                         height = "120"/>  
 [Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"}  
 King Fahd University of Petroleum and Minerals  
 Dhahran, Saudi Arabia  
