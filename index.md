@@ -5,7 +5,7 @@ title: Home
 ## Junaid ur Rehman, Ph.D.
 
 
-**Assistant Professor**  <img align="right" src="files/photo.JPG" 
+**Assistant Professor**  <img align="right" src="files/junaid-photo-1.JPG" 
                                                          width = "95"
                                                          height = "100"/>  
 [Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"}  
