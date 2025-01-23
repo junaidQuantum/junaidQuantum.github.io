@@ -37,9 +37,9 @@
     </style>
 </head>
 <body>
-    <h1>Projects</h1>
-    <h2>Past Projects</h2>
-    <p><strong>University of Luxembourg</strong></p>
+    # Projects
+    ## Past Projects
+    ### University of Luxembourg
     <ol class="project-list">
         <li class="project-item">
             <p class="project-title">
