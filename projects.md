@@ -1,11 +1,61 @@
-# Projects
-
-
-## Past Projects
- **University of Luxembourg**  
-    1. [**Lux4QCI:**](https://lux4qci.eu){:target="_blank" rel="noopener"} Luxembourg Experimental Network for Quantum Communication Infrastructure  
-    **Role:** Technical Manager  
-    **Brief Description:**  To go beyond peer-to-peer quantum key distribution and build the first quantum key distribution network in Luxembourg. The project is funded by the European Union through the Digital Europe Programme (DEP).  
-    2. **LUQCIA:** Luxembourg Quantum Communication Infrastructure Laboratory  
-    **Role:** Team Member (Execution and Reporting)  
-    **Brief Description:**  To build a national testbed for Quantum Communication Infrastructure (QCI) and enable advanced collaborative research in this domain. The project is funded by the European Union–Next Generation EU, with the collaboration of the Department of Media, Connectivity and Digital Policy (SMC) of Luxembourg.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .project-list {
+            margin-left: 20px;
+        }
+        .project-item {
+            margin-bottom: 20px;
+        }
+        .project-title a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .project-title a:hover {
+            text-decoration: underline;
+        }
+        .project-role,
+        .project-description {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Projects</h1>
+    <h2>Past Projects</h2>
+    <p><strong>University of Luxembourg</strong></p>
+    <ol class="project-list">
+        <li class="project-item">
+            <p class="project-title">
+                <a href="https://lux4qci.eu" target="_blank" rel="noopener"><strong>Lux4QCI:</strong></a>
+                Luxembourg Experimental Network for Quantum Communication Infrastructure
+            </p>
+            <p class="project-role"><strong>Role:</strong> Technical Manager</p>
+            <p class="project-description">
+                <strong>Brief Description:</strong> To go beyond peer-to-peer quantum key distribution and build the first quantum key distribution network in Luxembourg. The project is funded by the European Union through the Digital Europe Programme (DEP).
+            </p>
+        </li>
+        <li class="project-item">
+            <p class="project-title">
+                <strong>LUQCIA:</strong> Luxembourg Quantum Communication Infrastructure Laboratory
+            </p>
+            <p class="project-role"><strong>Role:</strong> Team Member (Execution and Reporting)</p>
+            <p class="project-description">
+                <strong>Brief Description:</strong> To build a national testbed for Quantum Communication Infrastructure (QCI) and enable advanced collaborative research in this domain. The project is funded by the European Union–Next Generation EU, with the collaboration of the Department of Media, Connectivity and Digital Policy (SMC) of Luxembourg.
+            </p>
+        </li>
+    </ol>
+</body>
+</html>
