@@ -41,7 +41,7 @@ title: Projects
 </head>
 <body>
     <h1> Projects </h1>
-    <h2>Ongoing Projects<h2>
+    <h2>Ongoing Projects</h2>
     Under Construction...  
     <h2> Past Projects </h2>
     <ol class="project-list">
