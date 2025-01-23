@@ -1,3 +1,6 @@
+---
+title: Projects
+---
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,9 +40,9 @@
     </style>
 </head>
 <body>
-    # Projects
-    ## Past Projects
-    ### University of Luxembourg
+    <h1> Projects </h1>
+    <h2> Past Projects </h2>
+    <h3> University of Luxembourg </h3>
     <ol class="project-list">
         <li class="project-item">
             <p class="project-title">
