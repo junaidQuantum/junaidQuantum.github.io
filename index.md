@@ -1,6 +1,7 @@
 <head>
 	<link rel="shortcut icon" type="image/png" href="/icon.png">
 </head>
+
 ---
 title: Home
 ---
