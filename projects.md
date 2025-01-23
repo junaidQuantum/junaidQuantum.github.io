@@ -81,7 +81,7 @@ title: Projects
             </p>
             <p class="project-role"><strong>Role:</strong> Team Member (Proposal Writing, Execution, and Reporting)</p>
             <p class="project-description">
-                <strong>Brief Description:</strong> Funded by the National Research Foundation (NRF) of Korea, this project aimed to develop the fundamental concepts of (classical-quantum) hybrid communication networks, when assisted by entanglement in multiple degrees of freedom
+                <strong>Brief Description:</strong> Funded by the National Research Foundation (NRF) of Korea, this project aimed to develop the fundamental concepts of (classical-quantum) hybrid communication networks, when assisted by entanglement in multiple degrees of freedom.
             </p>
         </li>
     </ol>
