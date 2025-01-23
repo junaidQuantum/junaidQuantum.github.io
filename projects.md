@@ -39,9 +39,7 @@ title: Projects
         }
     </style>
 </head>
-<body>
-    <h3>Ongoing Projects</h3>
-    Under Construction...  
+<body> 
     <h3> Past Projects </h3>
     <ol class="project-list">
         <li class="project-item">
