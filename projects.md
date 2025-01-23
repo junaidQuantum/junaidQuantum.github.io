@@ -17,7 +17,7 @@
             padding: 0;
         }
         .project-item {
-            margin-bottom: 15px; /* Reduce spacing between projects */
+            margin-bottom: 10px; /* Reduce spacing between projects */
         }
         .project-title {
             margin: 0; /* Remove extra margin around title */
@@ -25,7 +25,7 @@
         .project-role, 
         .project-description {
             margin: 5px 0 0 0; /* Tighten vertical spacing and align left */
-            padding-left: 25px; /* Align with the project title */
+            padding-left: 20px; /* Align with the project title */
         }
         .project-title a {
             color: #007BFF;
@@ -38,7 +38,6 @@
 </head>
 <body>
     <h1>Projects</h1>
-
     <h2>Past Projects</h2>
     <p><strong>University of Luxembourg</strong></p>
     <ol class="project-list">
