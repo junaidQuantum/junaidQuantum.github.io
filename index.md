@@ -11,6 +11,7 @@ title: Home
 [Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"}  
 King Fahd University of Petroleum and Minerals  
 Dhahran, Saudi Arabia  
+**Contact:** junaid.urrehman at kfupm.edu.sa
 
 
 <link rel="shortcut icon" type="image/png" href="{{ "icon.png" | prepend: site.baseurl }}" >
