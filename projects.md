@@ -10,7 +10,7 @@ title: Projects
         body {
             font-family: Arial, sans-serif;
             line-height: 1.0;
-            margin: 10px;
+            margin: 15px;
         }
         h1, h2 {
             color: #333;
