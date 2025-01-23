@@ -2,7 +2,7 @@
 
 
 ## Past Projects
- **University of Luxembourg**
+ **University of Luxembourg**  
     <ul>
         <li>
             [**Lux4QCI:**](lux4qci.eu){:target="_blank" rel="noopener"} Luxembourg Experimental Network for Quantum Communication Infrastructure  
