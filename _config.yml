@@ -1,3 +1,7 @@
+plugins:
+  - jekyll-seo-tag
+theme: jekyll-theme-leap-day
+
 name: Research Profile
 title: Junaid ur Rehman
 markdown: kramdown
@@ -7,7 +11,7 @@ twitter:
   username: junaid_572
   card: summary
 
-theme: jekyll-theme-leap-day
+
 
 show_downloads: true
   
