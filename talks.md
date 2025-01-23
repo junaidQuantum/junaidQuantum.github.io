@@ -1,6 +1,6 @@
 # Talks
 
-1. **Beyond Point-to-Point Security in Quantum Communications**
+1. **Beyond Point-to-Point Security in Quantum Communications**  
    Invited Talk at Symposium of Quantum Computing and Technology, King Fahd University of Petroleum and Minerals,
 Dhahran, Saudi Arabia (2025-02-17).
 
