@@ -8,10 +8,10 @@
 
 ### University of Luxembourg
 - **Quantum Communications and Quantum Key Distribution**  
-  Erasmus Mundus Joint Master in Cybersecurity (CYBERUS)
+  Erasmus Mundus Joint Master in Cybersecurity (CYBERUS)  
   Winter Semester 2023
 - **Fundamentals of Quantum Communications**  
-  Doctoral Programme in Computer Science and Computer Engineering
+  Doctoral Programme in Computer Science and Computer Engineering  
   September to November 2022
 
 ### Kyung Hee University
