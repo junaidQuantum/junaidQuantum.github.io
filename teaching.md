@@ -1,4 +1,6 @@
-# Teaching
+---
+title: Teaching
+---
 
 ### King Fahd University of Petroleum and Minerals  
 - **EE204: Fundamentals of Electric Circuits**  
