@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             margin: 20px;
         }
         h1, h2 {
@@ -15,9 +14,18 @@
         }
         .project-list {
             margin-left: 20px;
+            padding: 0;
         }
         .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduce spacing between projects */
+        }
+        .project-title {
+            margin: 0; /* Remove extra margin around title */
+        }
+        .project-role, 
+        .project-description {
+            margin: 5px 0 0 0; /* Tighten vertical spacing and align left */
+            padding-left: 25px; /* Align with the project title */
         }
         .project-title a {
             color: #007BFF;
@@ -26,14 +34,11 @@
         .project-title a:hover {
             text-decoration: underline;
         }
-        .project-role,
-        .project-description {
-            margin-left: 20px;
-        }
     </style>
 </head>
 <body>
     <h1>Projects</h1>
+
     <h2>Past Projects</h2>
     <p><strong>University of Luxembourg</strong></p>
     <ol class="project-list">
