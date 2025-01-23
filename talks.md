@@ -13,11 +13,11 @@ title: Talks & Interviews
 5. **Luxembourgish National Testbed for Quantum Communication**  
    Delivered at Nexus2050 event, LUXEXPO, Luxembourg (2024-06-26)
 6. **Quantum Computing: Basic Theory and Future Expectations**  
-   Public lecture organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-11-27)
+   Short Course organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-11-27)
 7. **Quantum Communications: Theory and Applications**  
-  Public lecture organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-11-27)
+   Short Course organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-11-27)
 8. **Introduction to Quantum Computing and Communications**  
-   Public lecture organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-06-13)
+   Short Course organized by the Digital Learning Hub (DLH), Esch-sur-Alzette, Luxembourg. (2023-06-13)
 9. **Quantum Communications Infrastructure in Luxembourg**  
     Public talk at SnT Partnership Day 2023, European Convention Center, Luxembourg. (2023-05-15)
 10. **Quantum Computing: A Brief History and Recent Trends**  
