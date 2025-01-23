@@ -20,15 +20,15 @@ title: Projects
             padding: 0;
         }
         .project-item {
-            margin-bottom: 10px; /* Reduce spacing between projects */
+            margin-bottom: 10px;
         }
         .project-title {
-            margin: 0; /* Remove extra margin around title */
+            margin: 5px; 
         }
         .project-role, 
         .project-description {
-            margin: 5px 0 0 0; /* Tighten vertical spacing and align left */
-            padding-left: 20px; /* Align with the project title */
+            margin: 0px 0 0 0; /* Tighten vertical spacing and align left */
+            padding-left: 10px; /* Align with the project title */
         }
         .project-title a {
             color: #007BFF;
@@ -51,7 +51,7 @@ title: Projects
             </p>
             <p class="project-role"><strong>Role:</strong> Technical Manager</p>
             <p class="project-description">
-                <strong>Brief Description:</strong> To go beyond peer-to-peer quantum key distribution and build the first quantum key distribution network in Luxembourg. The project is funded by the European Union through the Digital Europe Programme (DEP).
+                <strong>Brief Description:</strong> To go beyond peer-to-peer quantum key distribution and build the first quantum key distribution network in Luxembourg. Funded by the European Union through the Digital Europe Programme (DEP).
             </p>
         </li>
         <li class="project-item">
@@ -60,7 +60,7 @@ title: Projects
             </p>
             <p class="project-role"><strong>Role:</strong> Team Member (Execution and Reporting)</p>
             <p class="project-description">
-                <strong>Brief Description:</strong> To build a national testbed for Quantum Communication Infrastructure (QCI) and enable advanced collaborative research in this domain. The project is funded by the European Union–Next Generation EU, with the collaboration of the Department of Media, Connectivity and Digital Policy (SMC) of Luxembourg.
+                <strong>Brief Description:</strong> To build a national testbed for Quantum Communication Infrastructure (QCI) and enable advanced collaborative research in this domain. Funded by the European Union–Next Generation EU, with the collaboration of the Department of Media, Connectivity and Digital Policy (SMC) of Luxembourg.
             </p>
         </li>
     </ol>
