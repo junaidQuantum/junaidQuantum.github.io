@@ -28,7 +28,7 @@ title: Projects
         .project-role, 
         .project-description {
             margin: 0px 0 0 0; /* Tighten vertical spacing and align left */
-            padding-left: 0px; /* Align with the project title */
+            padding-left: 5px; /* Align with the project title */
         }
         .project-title a {
             color: #007BFF;
