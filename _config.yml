@@ -1,7 +1,11 @@
 name: Research Profile
 title: Junaid ur Rehman
 markdown: kramdown
-
+url: https://junaidquantum.github.io/
+author: junaid ur rehman
+twitter:
+  username: junaid_572
+  card: summary
 
 theme: jekyll-theme-leap-day
 
