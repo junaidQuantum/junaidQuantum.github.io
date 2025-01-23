@@ -2,11 +2,10 @@
 title: Talks & Interviews
 ---
 
-### Talks
+## Talks & Short Courses
 
 1. **Beyond Point-to-Point Security in Quantum Communications**  
-   Invited Talk at Symposium of Quantum Computing and Technology, King Fahd University of Petroleum and Minerals,
-Dhahran, Saudi Arabia (2025-02-17).
+   Invited Talk at Symposium of Quantum Computing and Technology, King Fahd University of Petroleum and Minerals, Dhahran, Saudi Arabia (2025-02-17).
 2. **Role of Quantum Error Correction in Second Quantum Revolution**  
    Invited Talk at Kyung Hee University, Yongin, South Korea. (Online, 2024-12-04)
 3. **Challenges Ahead on the Road to EuroQCI**  
@@ -27,5 +26,5 @@ Dhahran, Saudi Arabia (2025-02-17).
     Invited talk at Korea Institute of Science and Technology, Suwon, Korea (Online, 2021-08-12)
 
 
-### Interviews  
+## Interviews  
 Under construction...
