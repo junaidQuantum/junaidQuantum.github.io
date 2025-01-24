@@ -9,7 +9,7 @@ title: Talks & Short Courses
 2. **Role of Quantum Error Correction in Second Quantum Revolution**  
    Invited Talk at Kyung Hee University, Yongin, South Korea. (Online, 2024-12-04)
 3. **Challenges Ahead on the Road to EuroQCI**  
-   Invited Talk at HellasQCI Training Event, Crete, Greece (2024-09-04)
+   Invited Talk & Panel Discussion at HellasQCI Training Event, Crete, Greece (2024-09-04)
 5. **Luxembourgish National Testbed for Quantum Communication** [(YouTube)](https://www.youtube.com/watch?v=CpQ7eNQvjF0){:target="_blank" rel="noopener"}  
    Invited Talk at Nexus2050 event, LUXEXPO, Luxembourg (2024-06-26)
 6. **Quantum Computing: Basic Theory and Future Expectations**  
