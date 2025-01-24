@@ -22,7 +22,7 @@ General research interests include fundamentals of <span style="color:blue"> **q
 **Online Profiles:**
 - [Google Scholar](https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en){:target="_blank" rel="noopener"}
 - [Researchgate](https://www.researchgate.net/profile/Junaid-Ur-Rehman-3){:target="_blank" rel="noopener"}
-- [Scopus](https://www.scopus.com/authid/detail.uri?authorId=57193760138){:target="_blank" rel="noopener"} [<span style="color:red">Requires Subscription/Account!</span>]
+- [Scopus](https://www.scopus.com/authid/detail.uri?authorId=57193760138){:target="_blank" rel="noopener"}
 
 ### Biography
 Junaid ur Rehman received the B.S. degree in Electrical Engineering from National University of Sciences and Technology (NUST), Islamabad, Pakistan, in 2013, and the Ph.D. degree in Electronic Engineering from Kyung Hee University (KHU), Yongin-si, Korea, in 2019.  
