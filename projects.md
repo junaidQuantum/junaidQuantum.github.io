@@ -40,6 +40,18 @@ title: Projects
     </style>
 </head>
 <body> 
+    <h3> Ongoing Projects </h3>
+    <ol class="project-list">
+        <li class="project-item">
+            <p class="project-title">
+                <strong>Time-Varying Quantum Noise in Near-Term Quantum Systems</strong>
+            </p>
+            <p class="project-role"><strong>Role:</strong> PI </p>
+            <p class="project-description">
+                <strong>Brief Description:</strong> Early Career Grant funded by the Deanship of Research KFUPM. This project aims to develop novel methods of noise estimation beyond the time-invariance assumption.
+            </p>
+        </li>
+    </ol>    
     <h3> Past Projects </h3>
     <ol class="project-list">
         <li class="project-item">
