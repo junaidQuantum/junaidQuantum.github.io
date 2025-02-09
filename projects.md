@@ -48,7 +48,7 @@ title: Projects
             </p>
             <p class="project-role"><strong>Role:</strong> PI </p>
             <p class="project-description">
-                <strong>Brief Description:</strong> Early Career Grant funded by the Deanship of Research KFUPM. This project aims to develop novel methods of noise estimation beyond the time-invariance assumption in quantum systems.
+                <strong>Brief Description:</strong> Early Career Grant funded by the Deanship of Research KFUPM. This project aims to develop novel methods of noise estimation beyond the time-invariance assumption in quantum systems. (2025-02 to 2026-01)
             </p>
         </li>
     </ol>    
