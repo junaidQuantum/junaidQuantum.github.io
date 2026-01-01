@@ -9,7 +9,7 @@ title: Home
                                                          width = "100"
                                                          height = "120"/>  
 [Department of Electrical Engineering](https://ee.kfupm.edu.sa/people/faculty){:target="_blank" rel="noopener"}  
-King Fahd University of Petroleum and Minerals  
+King Fahd University of Petroleum & Minerals  
 Dhahran, Saudi Arabia  
 **Contact:** junaid.urrehman at kfupm.edu.sa
 
