@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Quantum Nexus Lab</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.7;
+        }
+        html { scroll-behavior: smooth; }
+
+        .nav-link {
+            position: relative;
+            color: #94a3b8;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #818cf8;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #ffffff;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .page-header {
+            background: linear-gradient(145deg, #0b1120 0%, #1a2a4a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.12;
+            bottom: -150px;
+            right: -100px;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 48px;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            border-radius: 4px;
+        }
+
+        .contact-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e9edf4;
+        }
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 24px -8px rgba(0, 0, 0, 0.08);
+            border-color: #818cf8;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .fade-in-d1 { animation-delay: 0.05s; }
+        .fade-in-d2 { animation-delay: 0.15s; }
+        .fade-in-d3 { animation-delay: 0.30s; }
+
+        /* Email reveal button */
+        .email-reveal-btn {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .email-reveal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3);
+        }
+        .email-reveal-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Hide email initially, show on click */
+        .email-hidden .email-text {
+            display: none;
+        }
+        .email-hidden .email-placeholder {
+            display: inline;
+        }
+        .email-revealed .email-text {
+            display: inline;
+        }
+        .email-revealed .email-placeholder {
+            display: none;
+        }
+
+        /* Contact form styling */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-size: 0.875rem;
+            background: white;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #818cf8;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                QN
+            </div>
+            <span class="text-white font-semibold text-lg tracking-tight">Quantum Nexus Lab</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="members.html" class="nav-link">Members</a>
+            <a href="publications.html" class="nav-link">Publications</a>
+            <a href="research.html" class="nav-link">Research</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+        </div>
+        <div class="md:hidden text-white text-2xl cursor-pointer">☰</div>
+    </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header text-white pt-28 pb-16 px-6">
+    <div class="max-w-5xl mx-auto relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Contact</h1>
+        <p class="text-indigo-200/70 text-lg mt-2 max-w-2xl">
+            Get in touch with the Quantum Nexus Lab. We welcome collaborations, inquiries, and discussions about quantum information sciences.
+        </p>
+    </div>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- ====== CONTACT OPTIONS ====== -->
+    <section class="fade-in fade-in-d1">
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Address -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 contact-card">
+                <div class="text-3xl mb-3">📍</div>
+                <h3 class="text-lg font-semibold text-slate-800">Visit Us</h3>
+                <div class="mt-3 text-slate-600 text-sm space-y-0.5">
+                    <p><span class="font-medium text-slate-700">Quantum Nexus Lab</span></p>
+                    <p>Department of Electrical Engineering</p>
+                    <p>King Fahd University of Petroleum & Minerals</p>
+                    <p>Dhahran 31261, Saudi Arabia</p>
+                </div>
+            </div>
+
+            <!-- Email with Protection -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 contact-card" id="email-section">
+                <div class="text-3xl mb-3">✉️</div>
+                <h3 class="text-lg font-semibold text-slate-800">Email Us</h3>
+                <div class="mt-3 text-slate-600 text-sm">
+                    <p class="text-slate-500 text-xs mb-2">Click the button below to reveal the email address.</p>
+
+                    <div id="email-container" class="email-hidden">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <span class="email-placeholder text-slate-400">🔒 Click to reveal</span>
+                            <span class="email-text font-medium text-indigo-600">
+                                junaid<span style="display:none;">_no_spam_</span>.urrehman<span style="display:none;">_no_spam_</span>@kfupm<span style="display:none;">_no_spam_</span>.edu.sa
+                            </span>
+                            <button id="reveal-email-btn" class="email-reveal-btn text-white text-xs px-4 py-2 rounded-full font-medium">
+                                Reveal Email
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">
+                            <span class="email-placeholder">—</span>
+                            <span class="email-text">📋 Click to copy: <button id="copy-email-btn" class="text-indigo-500 hover:underline text-xs bg-transparent border-0 cursor-pointer">Copy</button></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT FORM ====== -->
+    <section class="fade-in fade-in-d2">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-6">Send a Message</h2>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+            <p class="text-sm text-slate-500 mb-6">
+                Feel free to reach out with any questions, collaboration ideas, or research inquiries.
+            </p>
+
+            <!-- Updated Form with your Formspree ID -->
+            <form id="contact-form" action="https://formspree.io/f/xaqrezvg" method="POST" class="space-y-5">
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Dr. Jane Doe" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Your Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="jane@example.com" required />
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" placeholder="Research collaboration inquiry" />
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-input" placeholder="Tell us about your research interests or inquiry..." required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-sm font-medium transition shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/30">
+                        Send Message
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">
+                    Your message will be sent directly to our team via Formspree.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ====== SOCIAL / CONNECT ====== -->
+    <section class="fade-in fade-in-d3">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-6">Connect With Us</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Google Scholar -->
+            <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center hover:border-indigo-300 transition hover:shadow-md">
+                <div class="text-2xl mb-1">🎓</div>
+                <p class="text-sm font-medium text-slate-700">Google Scholar</p>
+                <p class="text-xs text-slate-400">Publications</p>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/junaid-ur-rehman-ph-d-5825861b/" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center hover:border-indigo-300 transition hover:shadow-md">
+                <div class="text-2xl mb-1">💼</div>
+                <p class="text-sm font-medium text-slate-700">LinkedIn</p>
+                <p class="text-xs text-slate-400">Professional</p>
+            </a>
+
+            <!-- ResearchGate -->
+            <a href="https://www.researchgate.net/profile/Junaid-Ur-Rehman-3?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center hover:border-indigo-300 transition hover:shadow-md">
+                <div class="text-2xl mb-1">📚</div>
+                <p class="text-sm font-medium text-slate-700">ResearchGate</p>
+                <p class="text-xs text-slate-400">Research Network</p>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/junaid572" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 text-center hover:border-indigo-300 transition hover:shadow-md">
+                <div class="text-2xl mb-1">🐙</div>
+                <p class="text-sm font-medium text-slate-700">GitHub</p>
+                <p class="text-xs text-slate-400">Code & Simulations</p>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#0b1120] text-slate-400 mt-16 py-10 px-6">
+    <div class="max-w-6xl mx-auto text-center text-sm">
+        <p class="text-slate-300 font-medium">Quantum Nexus Lab</p>
+        <p class="text-sm text-slate-500">The nexus of quantum information sciences</p>
+        <div class="flex justify-center gap-6 mt-4 text-xs text-slate-500">
+            <span>© 2026</span>
+            <span>KFUPM</span>
+            <span>Department of Electrical Engineering</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ================= EMAIL REVEAL & FORM SCRIPTS ================= -->
+<script>
+    // --- Email Reveal Logic ---
+    const container = document.getElementById('email-container');
+    const revealBtn = document.getElementById('reveal-email-btn');
+    const copyBtn = document.getElementById('copy-email-btn');
+
+    if (revealBtn) {
+        revealBtn.addEventListener('click', function() {
+            // Toggle the class to show/hide email
+            container.classList.toggle('email-hidden');
+            container.classList.toggle('email-revealed');
+
+            // Update button text
+            if (container.classList.contains('email-revealed')) {
+                revealBtn.textContent = 'Hide Email';
+            } else {
+                revealBtn.textContent = 'Reveal Email';
+            }
+        });
+    }
+
+    // --- Copy Email to Clipboard ---
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+            // Get the full email text (without the hidden span content)
+            const emailSpan = container.querySelector('.email-text');
+            const fullEmail = 'junaid.urrehman@kfupm.edu.sa';
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(fullEmail).then(() => {
+                // Brief feedback
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = fullEmail;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+        });
+    }
+
+    // --- Contact Form Handling ---
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                // Re-enable after a few seconds (in case the page doesn't redirect)
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 5000);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
