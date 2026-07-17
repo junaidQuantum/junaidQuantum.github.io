@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Junaid ur Rehman | Quantum Information Scientist</title>
+    
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Subtle glow orbs */
+        .hero-gradient::before,
+        .hero-gradient::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .hero-gradient::before {
+            width: 400px;
+            height: 400px;
+            background: #4f46e5;
+            top: -120px;
+            right: -120px;
+        }
+        .hero-gradient::after {
+            width: 300px;
+            height: 300px;
+            background: #7c3aed;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.25s ease;
+            border: 1px solid #e9edf4;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+            border-color: #cbd5e1;
+        }
+        
+        /* Profile badge shimmer */
+        .badge-pill {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Section title underline */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 48px;
+            height: 4px;
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        
+        /* Simple fade-in on load */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .fade-in-d1 { animation-delay: 0.05s; }
+        .fade-in-d2 { animation-delay: 0.15s; }
+        .fade-in-d3 { animation-delay: 0.30s; }
+    </style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero-gradient text-white relative z-10">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative z-10">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left">
+            <!-- Avatar placeholder – replace with your photo if desired -->
+            <div class="flex-shrink-0">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-5xl font-light text-white shadow-xl border-2 border-white/10">
+                    JR
+                </div>
+            </div>
+            <div class="flex-1 fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                    Junaid ur Rehman, Ph.D.
+                </h1>
+                <p class="text-xl md:text-2xl text-indigo-200 font-light mt-2">
+                    Assistant Professor
+                </p>
+                <p class="text-indigo-100/80 text-lg">
+                    Department of Electrical Engineering
+                </p>
+                <p class="text-indigo-100/70">
+                    King Fahd University of Petroleum & Minerals &bull; Dhahran, Saudi Arabia
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-5">
+                    <span class="badge-pill px-4 py-1.5 rounded-full text-sm text-indigo-100/90">
+                        ✉️ junaid.urrehman@kfupm.edu.sa
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="max-w-5xl mx-auto px-6 py-14 space-y-16">
+
+    <!-- Research Interests -->
+    <section class="fade-in fade-in-d1">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">
+            Research Interests
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-5">
+            <div class="bg-white p-6 rounded-2xl card-hover">
+                <h3 class="text-lg font-semibold text-indigo-700">Quantum Communications</h3>
+                <p class="text-slate-600 text-sm mt-1">
+                    Channel capacity, performance limits, and secure communication protocols.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl card-hover">
+                <h3 class="text-lg font-semibold text-indigo-700">Quantum Computing</h3>
+                <p class="text-slate-600 text-sm mt-1">
+                    Algorithms for practical problems in communication systems.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl card-hover">
+                <h3 class="text-lg font-semibold text-indigo-700">Quantum Sensing</h3>
+                <p class="text-slate-600 text-sm mt-1">
+                    Advanced measurement techniques using quantum principles.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl card-hover">
+                <h3 class="text-lg font-semibold text-indigo-700">Theoretical Tools</h3>
+                <p class="text-slate-600 text-sm mt-1">
+                    Information theory, machine learning, linear algebra, complexity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography -->
+    <section class="fade-in fade-in-d2">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">
+            Biography
+        </h2>
+        <div class="bg-white p-7 md:p-10 rounded-2xl shadow-sm border border-slate-100/80">
+            <div class="space-y-4 text-slate-700 leading-relaxed">
+                <p>
+                    <span class="font-medium text-slate-900">Junaid ur Rehman</span> received the B.S. degree in Electrical Engineering from 
+                    <span class="font-medium">National University of Sciences and Technology (NUST)</span>, Islamabad, in 2013, 
+                    and the Ph.D. degree in Electronic Engineering from 
+                    <span class="font-medium">Kyung Hee University (KHU)</span>, Korea, in 2019.
+                </p>
+                <p>
+                    He worked as a Postdoctoral Fellow, Research Associate, and Research Scientist at 
+                    KHU, <span class="font-medium">KIST</span>, and the 
+                    <span class="font-medium">SIGCOM group</span> at the University of Luxembourg. 
+                    Currently, he is an Assistant Professor at KFUPM, Saudi Arabia.
+                </p>
+                <p class="text-sm text-slate-500 border-t border-slate-100 pt-4 mt-2">
+                    Dr. ur Rehman serves on TPC for IEEE ICC & Globecom, and is an 
+                    <span class="text-indigo-600 font-medium">Exemplary Reviewer</span> 
+                    for IEEE Wireless Communications Letters (2022).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles -->
+    <section class="fade-in fade-in-d3">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">
+            Connect
+        </h2>
+        <div class="flex flex-wrap gap-3">
+            <a href="#" class="px-6 py-2.5 bg-white rounded-full text-sm font-medium text-slate-700 shadow-sm border border-slate-200/80 hover:border-indigo-300 hover:text-indigo-700 hover:shadow-md transition-all duration-200">
+                Google Scholar
+            </a>
+            <a href="#" class="px-6 py-2.5 bg-white rounded-full text-sm font-medium text-slate-700 shadow-sm border border-slate-200/80 hover:border-indigo-300 hover:text-indigo-700 hover:shadow-md transition-all duration-200">
+                LinkedIn
+            </a>
+            <a href="#" class="px-6 py-2.5 bg-white rounded-full text-sm font-medium text-slate-700 shadow-sm border border-slate-200/80 hover:border-indigo-300 hover:text-indigo-700 hover:shadow-md transition-all duration-200">
+                ResearchGate
+            </a>
+            <a href="#" class="px-6 py-2.5 bg-white rounded-full text-sm font-medium text-slate-700 shadow-sm border border-slate-200/80 hover:border-indigo-300 hover:text-indigo-700 hover:shadow-md transition-all duration-200">
+                GitHub
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="max-w-5xl mx-auto px-6 py-10 border-t border-slate-200/70 mt-8 text-center text-sm text-slate-400">
+    <p>&copy; 2026 Junaid ur Rehman &mdash; crafted with care</p>
+</footer>
+
+</body>
+</html>
