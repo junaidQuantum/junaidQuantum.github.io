@@ -129,25 +129,9 @@
 </head>
 <body>
 
-<!-- ================= NAVIGATION ================= -->
-<nav class="fixed top-0 w-full z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-                QN
-            </div>
-            <span class="text-white font-semibold text-lg tracking-tight">Quantum Nexus Lab</span>
-        </a>
-        <div class="hidden md:flex items-center gap-8 text-sm">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="members.html" class="nav-link active">Members</a>
-            <a href="#research" class="nav-link">Research</a>
-            <a href="#publications" class="nav-link">Publications</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <div class="md:hidden text-white text-2xl cursor-pointer">☰</div>
-    </div>
-</nav>
+<!-- ================= NAVIGATION (LOADED BY JAVASCRIPT) ================= -->
+    <!-- The navigation will be injected here by load-nav.js -->
+    <div id="navigation-container"></div>
 
 <!-- ================= PAGE HEADER ================= -->
 <header class="page-header text-white pt-28 pb-16 px-6">
@@ -399,6 +383,10 @@
         </div>
     </div>
 </footer>
+
+    <!-- ================= LOAD NAVIGATION ================= -->
+    <!-- This loads the navigation from navigation.html -->
+    <script src="load-nav.js"></script>
 
 </body>
 </html>
