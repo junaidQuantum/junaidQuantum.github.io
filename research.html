@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research | Quantum Nexus Lab</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.7;
+        }
+        html { scroll-behavior: smooth; }
+
+        .nav-link {
+            position: relative;
+            color: #94a3b8;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #818cf8;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #ffffff;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .page-header {
+            background: linear-gradient(145deg, #0b1120 0%, #1a2a4a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.12;
+            bottom: -150px;
+            right: -100px;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 48px;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            border-radius: 4px;
+        }
+
+        .research-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e9edf4;
+        }
+        .research-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
+            border-color: #818cf8;
+        }
+
+        .pub-ref {
+            font-size: 0.7rem;
+            background: #f1f5f9;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            color: #475569;
+            display: inline-block;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .pub-ref:hover {
+            background: #e2e8f0;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .fade-in-d1 { animation-delay: 0.05s; }
+        .fade-in-d2 { animation-delay: 0.15s; }
+        .fade-in-d3 { animation-delay: 0.30s; }
+        .fade-in-d4 { animation-delay: 0.45s; }
+
+        /* Custom accent colors for research areas */
+        .border-accent-comm { border-left: 4px solid #4f46e5; }
+        .border-accent-comp { border-left: 4px solid #7c3aed; }
+        .border-accent-sense { border-left: 4px solid #06b6d4; }
+        .border-accent-net { border-left: 4px solid #10b981; }
+        .border-accent-theory { border-left: 4px solid #f59e0b; }
+
+        .bg-accent-comm { background: #eef2ff; }
+        .bg-accent-comp { background: #f5f3ff; }
+        .bg-accent-sense { background: #ecfeff; }
+        .bg-accent-net { background: #ecfdf5; }
+        .bg-accent-theory { background: #fffbeb; }
+
+        .text-accent-comm { color: #4f46e5; }
+        .text-accent-comp { color: #7c3aed; }
+        .text-accent-sense { color: #06b6d4; }
+        .text-accent-net { color: #10b981; }
+        .text-accent-theory { color: #d97706; }
+    </style>
+</head>
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                QN
+            </div>
+            <span class="text-white font-semibold text-lg tracking-tight">Quantum Nexus Lab</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="members.html" class="nav-link">Members</a>
+            <a href="publications.html" class="nav-link">Publications</a>
+            <a href="research.html" class="nav-link active">Research</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="md:hidden text-white text-2xl cursor-pointer">☰</div>
+    </div>
+</nav>
+
+<!-- ================= PAGE HEADER ================= -->
+<header class="page-header text-white pt-28 pb-16 px-6">
+    <div class="max-w-5xl mx-auto relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Research</h1>
+        <p class="text-indigo-200/70 text-lg mt-2 max-w-3xl">
+            The Quantum Nexus Lab explores the theoretical and practical foundations of quantum information sciences, with a focus on quantum communications, computing, sensing, and networking.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6">
+            <a href="#overview" class="px-5 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm border border-white/10 transition">Overview</a>
+            <a href="#communications" class="px-5 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm border border-white/10 transition">Communications</a>
+            <a href="#computing" class="px-5 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm border border-white/10 transition">Computing</a>
+            <a href="#sensing" class="px-5 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm border border-white/10 transition">Sensing</a>
+            <a href="#networks" class="px-5 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm border border-white/10 transition">Networks</a>
+        </div>
+    </div>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- ====== OVERVIEW ====== -->
+    <section id="overview" class="fade-in fade-in-d1">
+        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-6">Overview</h2>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+            <p class="text-slate-700 leading-relaxed">
+                The Quantum Nexus Lab is dedicated to advancing the frontiers of <span class="font-medium text-indigo-600">quantum information sciences</span>. Our research spans the theoretical and algorithmic foundations of quantum technologies, with a particular emphasis on their applications to communication systems.
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-4">
+                At the core of our work is a commitment to understanding the <span class="font-medium text-indigo-600">fundamental limits</span> of quantum systems—from channel capacities and entanglement distributions to the performance bounds of quantum sensing and computing. We combine tools from <span class="font-medium text-indigo-600">quantum information theory</span>, <span class="font-medium text-indigo-600">machine learning</span>, and <span class="font-medium text-indigo-600">complexity theory</span> to develop practical solutions for next-generation quantum networks.
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-4">
+                Our work is characterized by a unique blend of <span class="font-medium text-indigo-600">theory-driven inquiry</span> and <span class="font-medium text-indigo-600">application-focused innovation</span>, bridging the gap between fundamental quantum science and its real-world deployment in communication systems.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-6 pt-6 border-t border-slate-100">
+                <span class="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                    Quantum Communications
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                    Quantum Computing
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                    Quantum Sensing
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Quantum Networks
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    Theoretical Foundations
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== QUANTUM COMMUNICATIONS ====== -->
+    <section id="communications" class="fade-in fade-in-d2">
+        <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">📡</span>
+            <h2 class="section-title text-2xl md:text-3xl text-slate-800">Quantum Communications</h2>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 research-card border-accent-comm">
+            <p class="text-slate-700 leading-relaxed">
+                Our research in quantum communications focuses on the <span class="font-medium">fundamental performance limits of quantum channels</span> and the development of protocols for secure and efficient information transmission. We investigate the channel capacity of various quantum communication channels, including discrete Weyl channels [<a href="#ref-2019" class="text-indigo-600 hover:underline">2019</a>, <a href="#ref-2020" class="text-indigo-600 hover:underline">2020</a>], and explore the interplay between quantum technologies and non-terrestrial networks [<a href="#ref-2024a" class="text-indigo-600 hover:underline">2024</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                A key contribution is the development of <span class="font-medium">variational methods</span> for estimating capacity bounds, enabling practical characterization of complex quantum channels [<a href="#ref-2022b" class="text-indigo-600 hover:underline">2022</a>]. We also explore the simultaneous communication and parameter estimation of Pauli channels, pushing the boundaries of what can be achieved with limited quantum resources [<a href="#ref-2022c" class="text-indigo-600 hover:underline">2022</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                The group has made significant advances in <span class="font-medium">MIMO quantum communication</span> in correlated pure-loss channels, establishing foundational results on diversity and multiplexing in quantum channels [<a href="#ref-2025a" class="text-indigo-600 hover:underline">2025</a>, <a href="#ref-2025b" class="text-indigo-600 hover:underline">2025</a>]. Our work also addresses the practical aspects of quantum key distribution [<a href="#ref-2017a" class="text-indigo-600 hover:underline">2017</a>] and quantum anonymous protocols [<a href="#ref-2021a" class="text-indigo-600 hover:underline">2021</a>].
+            </p>
+            <div class="flex flex-wrap gap-1 mt-4 pt-4 border-t border-slate-100">
+                <span class="pub-ref">Al-Hraishawi et al. 2024 IEEE OJ-COMS</span>
+                <span class="pub-ref">ur Rehman et al. 2025 EPJ QT</span>
+                <span class="pub-ref">ur Rehman & Shin 2022 IEEE ICC</span>
+                <span class="pub-ref">ur Rehman et al. 2024 IEEE TCOM</span>
+                <span class="pub-ref">ur Rehman et al. 2022 Phys. Rev. A</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== QUANTUM COMPUTING ====== -->
+    <section id="computing" class="fade-in fade-in-d3">
+        <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">💻</span>
+            <h2 class="section-title text-2xl md:text-3xl text-slate-800">Quantum Computing</h2>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 research-card border-accent-comp">
+            <p class="text-slate-700 leading-relaxed">
+                The group investigates quantum computing algorithms for practical problems in communication systems. We have developed quantum optimization algorithms for resource allocation problems, including the <span class="font-medium">Quantum Approximate Optimization Algorithm (QAOA)</span> for knapsack resource allocation [<a href="#ref-2023b" class="text-indigo-600 hover:underline">2023</a>] and for LEO satellite communications with cell-free massive MIMO [<a href="#ref-2023a" class="text-indigo-600 hover:underline">2023</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                Our work on <span class="font-medium">variational quantum computing</span> includes error-mitigated photonic variational quantum eigensolvers [<a href="#ref-2022a" class="text-indigo-600 hover:underline">2022</a>] and quantum property learning for NISQ networks [<a href="#ref-2025c" class="text-indigo-600 hover:underline">2025</a>]. We also explore the robustness of quantum algorithms for blockchain consensus [<a href="#ref-2022d" class="text-indigo-600 hover:underline">2022</a>] and optimal task scheduling in 6G networks [<a href="#ref-2024c" class="text-indigo-600 hover:underline">2024</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                A significant contribution is our work on <span class="font-medium">evolutionary algorithms and quantum computing</span>, reviewing recent advances, opportunities, and challenges at the intersection of these fields [<a href="#ref-2025d" class="text-indigo-600 hover:underline">2025</a>].
+            </p>
+            <div class="flex flex-wrap gap-1 mt-4 pt-4 border-t border-slate-100">
+                <span class="pub-ref">ur Rehman et al. 2023 IEEE ICC</span>
+                <span class="pub-ref">Lee et al. 2022 Optica</span>
+                <span class="pub-ref">Khalid et al. 2025 IEEE TCOM</span>
+                <span class="pub-ref">ur Rehman et al. 2025 IEEE Access</span>
+                <span class="pub-ref">Khalid et al. 2024 Springer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== QUANTUM SENSING ====== -->
+    <section id="sensing" class="fade-in fade-in-d4">
+        <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">🔬</span>
+            <h2 class="section-title text-2xl md:text-3xl text-slate-800">Quantum Sensing & Metrology</h2>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 research-card border-accent-sense">
+            <p class="text-slate-700 leading-relaxed">
+                Our research in quantum sensing focuses on the fundamental limits of measurement precision and the development of practical protocols for parameter estimation. A landmark contribution is the demonstration of <span class="font-medium">quantum-enhanced multiple-phase estimation</span> using multi-mode NOON states, published in Nature Communications [<a href="#ref-2021b" class="text-indigo-600 hover:underline">2021</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                We derive practical sensitivity bounds for multiple-phase estimation [<a href="#ref-2022e" class="text-indigo-600 hover:underline">2022</a>] and establish the optimal strategy for such measurements [<a href="#ref-2022f" class="text-indigo-600 hover:underline">2022</a>]. Our work also includes robust quantum state tomography methods for quantum sensing [<a href="#ref-2022g" class="text-indigo-600 hover:underline">2022</a>] and entanglement-free parameter estimation of generalized Pauli channels [<a href="#ref-2021c" class="text-indigo-600 hover:underline">2021</a>].
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                We also explore the intersection of sensing and security, developing quantum secure metrology for network-based applications [<a href="#ref-2023c" class="text-indigo-600 hover:underline">2023</a>].
+            </p>
+            <div class="flex flex-wrap gap-1 mt-4 pt-4 border-t border-slate-100">
+                <span class="pub-ref">Hong et al. 2021 Nat Commun</span>
+                <span class="pub-ref">Hong et al. 2022 Laser Photonics Rev.</span>
+                <span class="pub-ref">ur Rehman et al. 2022 Phys. Rev. A</span>
+                <span class="pub-ref">Farooq et al. 2022 Sensors</span>
+                <span class="pub-ref">ur Rehman & Shin 2021 Quantum</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== QUANTUM NETWORKS ====== -->
+    <section id="networks" class="fade-in fade-in-d4">
+        <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">🌐</span>
+            <h2 class="section-title text-2xl md:text-3xl text-slate-800">Quantum Networks & NISQ Systems</h2>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 research-card border-accent-net">
+            <p class="text-slate-700 leading-relaxed">
+                A major focus of the lab is on the engineering of quantum networks in the <span class="font-medium">Noisy Intermediate-Scale Quantum (NISQ) era</span>. Our comprehensive review on quantum network engineering [<a href="#ref-2024b" class="text-indigo-600 hover:underline">2024</a>] outlines the principles, missions, and challenges of building practical quantum networks.
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                We have pioneered approaches to <span class="font-medium">flexible entanglement routing</span> using reinforcement learning, enabling the delivery of end-to-end entanglement while optimizing for fidelity and rate [<a href="#ref-2025e" class="text-indigo-600 hover:underline">2025</a>]. Our work on traffic-aware minimum-cost quantum communication network planning [<a href="#ref-2025f" class="text-indigo-600 hover:underline">2025</a>] provides a practical framework for optimizing quantum network resources.
+            </p>
+            <p class="text-slate-700 leading-relaxed mt-3">
+                We explore the integration of quantum technologies with non-terrestrial networks [<a href="#ref-2024a" class="text-indigo-600 hover:underline">2024</a>] and quantum anonymous protocols for privacy in distributed networks [<a href="#ref-2022h" class="text-indigo-600 hover:underline">2022</a>]. Our recent work on quantum network applications in 6G paradigms [<a href="#ref-2025g" class="text-indigo-600 hover:underline">2025</a>] connects our research to next-generation communication systems.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-4 pt-4 border-t border-slate-100">
+                <span class="pub-ref">ur Rehman 2025 Quantum Inf Process</span>
+                <span class="pub-ref">Khalid et al. 2024 IEEE Netw.</span>
+                <span class="pub-ref">Maity et al. 2025 IEEE TQE</span>
+                <span class="pub-ref">Al-Hraishawi et al. 2024 IEEE OJ-COMS</span>
+                <span class="pub-ref">Khan et al. 2022 IEEE TCOM</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#0b1120] text-slate-400 mt-16 py-10 px-6">
+    <div class="max-w-6xl mx-auto text-center text-sm">
+        <p class="text-slate-300 font-medium">Quantum Nexus Lab</p>
+        <p class="text-sm text-slate-500">The nexus of quantum information sciences</p>
+        <div class="flex justify-center gap-6 mt-4 text-xs text-slate-500">
+            <span>© 2026</span>
+            <span>KFUPM</span>
+            <span>Department of Electrical Engineering</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
