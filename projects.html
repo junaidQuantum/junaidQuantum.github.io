@@ -1,343 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects | Quantum Nexus Lab</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.7;
-        }
-        html { scroll-behavior: smooth; }
-
-        .nav-link {
-            position: relative;
-            color: #94a3b8;
-            transition: color 0.2s;
-            font-weight: 500;
-        }
-        .nav-link:hover {
-            color: #ffffff;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #818cf8;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: #ffffff;
-        }
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .page-header {
-            background: linear-gradient(145deg, #0b1120 0%, #1a2a4a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: #7c3aed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.12;
-            bottom: -150px;
-            right: -100px;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 48px;
-            height: 4px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            border-radius: 4px;
-        }
-
-        .project-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e9edf4;
-        }
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
-            border-color: #818cf8;
-        }
-
-        .status-badge {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding: 0.15rem 0.6rem;
-            border-radius: 9999px;
-        }
-        .badge-active { background: #d1fae5; color: #065f46; }
-        .badge-completed { background: #e0e7ff; color: #3730a3; }
-        .badge-ongoing { background: #fef3c7; color: #92400e; }
-        .badge-upcoming { background: #e0f2fe; color: #0369a1; }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        .fade-in-d1 { animation-delay: 0.05s; }
-        .fade-in-d2 { animation-delay: 0.15s; }
-        .fade-in-d3 { animation-delay: 0.30s; }
-
-        /* Tag styling */
-        .tag {
-            display: inline-block;
-            padding: 0.1rem 0.6rem;
-            border-radius: 9999px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            background: #f1f5f9;
-            color: #475569;
-        }
-        .tag-comm { background: #eef2ff; color: #4f46e5; }
-        .tag-comp { background: #f5f3ff; color: #7c3aed; }
-        .tag-sense { background: #ecfeff; color: #06b6d4; }
-        .tag-net { background: #ecfdf5; color: #10b981; }
-        .tag-theory { background: #fffbeb; color: #d97706; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Quantum Nexus Lab</title>
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-   <!-- ================= NAVIGATION (LOADED BY JAVASCRIPT) ================= -->
-    <!-- The navigation will be injected here by load-nav.js -->
-    <div id="navigation-container"></div>
+<div id="site-nav"></div>
 
-<!-- ================= PAGE HEADER ================= -->
-<header class="page-header text-white pt-28 pb-16 px-6">
-    <div class="max-w-5xl mx-auto relative z-10">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Projects</h1>
-        <p class="text-indigo-200/70 text-lg mt-2 max-w-2xl">
-            Current and past research projects at the Quantum Nexus Lab, exploring the frontiers of quantum information sciences.
-        </p>
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Projects</div>
+      <h1>Funded Projects</h1>
     </div>
-</header>
+  </section>
 
-<!-- ================= MAIN CONTENT ================= -->
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
+  <section class="section">
+    <div class="container">
+      <h2 class="mt-0">Ongoing</h2>
 
-    <!-- ====== ACTIVE PROJECTS ====== -->
-    <section class="fade-in fade-in-d1">
-        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">Active Projects</h2>
+      <div class="card" style="margin-bottom:1rem;">
+        <h3>Time-Varying Quantum Noise in Near-Term Quantum Systems</h3>
+        <p class="person-role" style="margin-top:-0.3rem;">Role: PI &middot; 2025–2026</p>
+        <p>Early Career Grant funded by the Deanship of Research, KFUPM. This project develops novel methods of noise estimation beyond the time-invariance assumption in quantum systems.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="space-y-6">
+  <section class="section">
+    <div class="container">
+      <h2 class="mt-0">Past</h2>
 
-            <!-- Project 1 -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 project-card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 class="text-xl font-semibold text-slate-800">Reinforcement Learning for Flexible Entanglement Routing</h3>
-                            <span class="status-badge badge-active">Active</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="tag tag-net">Quantum Networks</span>
-                            <span class="tag tag-comp">Quantum Computing</span>
-                            <span class="tag tag-comm">Quantum Communications</span>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Developing reinforcement learning algorithms for optimal entanglement routing in quantum networks. The project aims to enable end-to-end entanglement delivery while optimizing for fidelity, rate, and resource utilization.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
-                            <span>📅 2025 – Present</span>
-                            <span>👥 Dr. Junaid ur Rehman (PI)</span>
-                            <span>🔗 <a href="#" class="text-indigo-600 hover:underline">GitHub</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 project-card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 class="text-xl font-semibold text-slate-800">Quantum MIMO Communications in Correlated Loss Channels</h3>
-                            <span class="status-badge badge-ongoing">Ongoing</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="tag tag-comm">Quantum Communications</span>
-                            <span class="tag tag-theory">Theoretical Foundations</span>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Investigating the fundamental limits of multiple-input multiple-output (MIMO) quantum communication systems operating in correlated pure-loss channels. This work extends classical diversity and multiplexing concepts to the quantum domain.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
-                            <span>📅 2024 – Present</span>
-                            <span>👥 Dr. Junaid ur Rehman, L. Oleynik, S. Koudia</span>
-                            <span>🔗 <a href="#" class="text-indigo-600 hover:underline">arXiv</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 project-card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 class="text-xl font-semibold text-slate-800">Traffic-Aware Quantum Network Planning (TAQNet)</h3>
-                            <span class="status-badge badge-active">Active</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="tag tag-net">Quantum Networks</span>
-                            <span class="tag tag-comm">Quantum Communications</span>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Developing a traffic-aware framework for minimum-cost quantum communication network planning. The project addresses the challenge of optimizing network resources while accommodating dynamic traffic patterns in quantum networks.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
-                            <span>📅 2024 – Present</span>
-                            <span>👥 Dr. Junaid ur Rehman, I. Maity, S. Chatzinotas</span>
-                            <span>🔗 <a href="#" class="text-indigo-600 hover:underline">IEEE TQE</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <div class="grid grid-2">
+        <div class="card">
+          <h3><a href="https://lux4qci.eu" target="_blank" rel="noopener">Lux4QCI</a></h3>
+          <p class="person-role" style="margin-top:-0.3rem;">Role: Technical Manager</p>
+          <p>Luxembourg Experimental Network for Quantum Communication Infrastructure. Goes beyond peer-to-peer quantum key distribution to build the first QKD network in Luxembourg. Funded by the European Union through the Digital Europe Programme (DEP).</p>
         </div>
-    </section>
-
-    <!-- ====== COMPLETED PROJECTS ====== -->
-    <section class="fade-in fade-in-d2">
-        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">Completed Projects</h2>
-
-        <div class="space-y-6">
-
-            <!-- Project 4 -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 project-card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 class="text-xl font-semibold text-slate-800">Quantum Property Learning for NISQ Networks</h3>
-                            <span class="status-badge badge-completed">Completed</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="tag tag-comp">Quantum Computing</span>
-                            <span class="tag tag-net">Quantum Networks</span>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Developed universal quantum witness machines for learning properties of quantum systems in NISQ networks. This work established a framework for verifying and characterizing quantum devices without full state tomography.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
-                            <span>📅 2024 – 2025</span>
-                            <span>👥 U. Khalid, Dr. J. ur Rehman, et al.</span>
-                            <span>🔗 <a href="#" class="text-indigo-600 hover:underline">IEEE TCOM</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 project-card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-2">
-                            <h3 class="text-xl font-semibold text-slate-800">Quantum Anonymous Communication Protocols</h3>
-                            <span class="status-badge badge-completed">Completed</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="tag tag-comm">Quantum Communications</span>
-                            <span class="tag tag-net">Quantum Networks</span>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Pioneered quantum anonymous protocols for collision detection, private information retrieval, and notification in distributed networks. These protocols ensure privacy and anonymity in quantum communication systems.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400">
-                            <span>📅 2021 – 2024</span>
-                            <span>👥 A. Khan, U. Khalid, Dr. J. ur Rehman</span>
-                            <span>🔗 <a href="#" class="text-indigo-600 hover:underline">IEEE TCOM</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="card">
+          <h3>LUQCIA</h3>
+          <p class="person-role" style="margin-top:-0.3rem;">Role: Team Member (Execution &amp; Reporting)</p>
+          <p>Luxembourg Quantum Communication Infrastructure Laboratory — a national testbed for QCI enabling advanced collaborative research. Funded by the European Union–Next Generation EU, with the Department of Media, Connectivity and Digital Policy (SMC) of Luxembourg.</p>
         </div>
-    </section>
-
-    <!-- ====== UPCOMING / PLACEHOLDER ====== -->
-    <section class="fade-in fade-in-d3">
-        <h2 class="section-title text-2xl md:text-3xl text-slate-800 mb-8">Upcoming Research Directions</h2>
-
-        <div class="grid md:grid-cols-3 gap-6">
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 project-card border-dashed border-2">
-                <div class="text-3xl mb-2">🔮</div>
-                <h4 class="font-semibold text-slate-800">Quantum Machine Learning</h4>
-                <p class="text-slate-500 text-sm mt-1">
-                    Exploring the intersection of quantum computing and machine learning for communication systems.
-                </p>
-                <span class="status-badge badge-upcoming mt-2 inline-block">Upcoming</span>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 project-card border-dashed border-2">
-                <div class="text-3xl mb-2">🌌</div>
-                <h4 class="font-semibold text-slate-800">Quantum-Satellite Integration</h4>
-                <p class="text-slate-500 text-sm mt-1">
-                    Integrating quantum technologies with non-terrestrial networks for global quantum connectivity.
-                </p>
-                <span class="status-badge badge-upcoming mt-2 inline-block">Upcoming</span>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 project-card border-dashed border-2">
-                <div class="text-3xl mb-2">⚛️</div>
-                <h4 class="font-semibold text-slate-800">Quantum Sensing for 6G</h4>
-                <p class="text-slate-500 text-sm mt-1">
-                    Quantum-enhanced sensing protocols for next-generation communication networks.
-                </p>
-                <span class="status-badge badge-upcoming mt-2 inline-block">Upcoming</span>
-            </div>
-
+        <div class="card">
+          <h3>Quantum Enigmata</h3>
+          <p class="person-role" style="margin-top:-0.3rem;">Role: Team Member (Proposal, Execution &amp; Reporting)</p>
+          <p>Foundations for Quantum Networking with Quantum Enigmata — leveraging quantum paradoxes to develop foundations for quantum communication networks. Funded by the National Research Foundation (NRF) of Korea.</p>
         </div>
-    </section>
-
+        <div class="card">
+          <h3>Hyperentanglement-Assisted Hybrid Quantum Communication</h3>
+          <p class="person-role" style="margin-top:-0.3rem;">Role: Team Member (Proposal, Execution &amp; Reporting)</p>
+          <p>Developed fundamental concepts of classical–quantum hybrid communication networks assisted by entanglement in multiple degrees of freedom. Funded by the National Research Foundation (NRF) of Korea.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-
-
-    <!-- ================= LOAD NAVIGATION ================= -->
-    <!-- This loads the navigation from navigation.html -->
-    <script src="load-nav.js"></script>
+<div id="site-footer"></div>
+<script src="assets/js/include.js"></script>
 </body>
 </html>

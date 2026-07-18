@@ -1,459 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Publications | Quantum Nexus Lab</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.7;
-        }
-        html { scroll-behavior: smooth; }
-
-        .nav-link {
-            position: relative;
-            color: #94a3b8;
-            transition: color 0.2s;
-            font-weight: 500;
-        }
-        .nav-link:hover {
-            color: #ffffff;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #818cf8;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: #ffffff;
-        }
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .page-header {
-            background: linear-gradient(145deg, #0b1120 0%, #1a2a4a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: #7c3aed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.12;
-            bottom: -150px;
-            right: -100px;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 48px;
-            height: 4px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            border-radius: 4px;
-        }
-
-        .pub-entry {
-            transition: background 0.15s ease;
-            border-left: 3px solid transparent;
-            padding: 0.75rem 1rem;
-            border-radius: 0.375rem;
-        }
-        .pub-entry:hover {
-            background: #f1f5f9;
-            border-left-color: #818cf8;
-        }
-        .pub-year {
-            font-variant-numeric: tabular-nums;
-            font-weight: 600;
-            color: #4f46e5;
-            min-width: 3.5rem;
-        }
-
-        .status-badge {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding: 0.15rem 0.6rem;
-            border-radius: 9999px;
-        }
-        .badge-published { background: #d1fae5; color: #065f46; }
-        .badge-preprint { background: #fef3c7; color: #92400e; }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        .fade-in-d1 { animation-delay: 0.05s; }
-        .fade-in-d2 { animation-delay: 0.15s; }
-        .fade-in-d3 { animation-delay: 0.30s; }
-
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e9edf4;
-        }
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
-            border-color: #818cf8;
-        }
-
-        .scholar-btn {
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        }
-        .scholar-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.4);
-        }
-        .scholar-icon {
-            display: inline-block;
-            font-weight: 700;
-            font-family: 'Georgia', serif;
-            letter-spacing: -0.02em;
-        }
-
-        .impact-card {
-            transition: all 0.3s ease;
-            border: 1px solid #e9edf4;
-        }
-        .impact-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 24px -8px rgba(0, 0, 0, 0.08);
-            border-color: #818cf8;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Quantum Nexus Lab</title>
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-   <!-- ================= NAVIGATION (LOADED BY JAVASCRIPT) ================= -->
-    <!-- The navigation will be injected here by load-nav.js -->
-    <div id="navigation-container"></div>
+<div id="site-nav"></div>
 
-<!-- ================= PAGE HEADER ================= -->
-<header class="page-header text-white pt-28 pb-16 px-6">
-    <div class="max-w-5xl mx-auto relative z-10">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Publications</h1>
-        <p class="text-indigo-200/70 text-lg mt-2 max-w-2xl">
-            Selected research outputs from the Quantum Nexus Lab. For a complete list, visit Google Scholar.
-        </p>
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Publications</div>
+      <h1>Selected Publications</h1>
+      <p class="lede">A curated selection of our most notable work, spanning quantum communications, quantum computing, and quantum sensing. The PI's Google Scholar profile contains the full, continuously updated publication list.</p>
+      <div class="hero-actions">
+        <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-primary">Full list on Google Scholar</a>
+        <a href="files/selected-publications.bib" class="btn">Download BibTeX (selected)</a>
+      </div>
     </div>
-</header>
+  </section>
 
-<!-- ================= MAIN CONTENT ================= -->
-<main class="max-w-5xl mx-auto px-6 py-16 space-y-16">
+  <section class="section">
+    <div class="container pub-list">
 
-    <!-- ====== GOOGLE SCHOLAR CTA ====== -->
-    <section class="fade-in fade-in-d1">
-        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 md:p-12 text-center border border-indigo-100">
-            <div class="flex items-center justify-center gap-3 mb-3">
-                <span class="text-4xl">🎓</span>
-                <span class="scholar-icon text-2xl text-indigo-700 font-bold">G</span>
-                <span class="text-2xl text-indigo-700 font-bold">Scholar</span>
-            </div>
-            <h2 class="text-2xl font-bold text-slate-800">View Our Complete Publication List</h2>
-            <p class="text-slate-600 mt-2 max-w-2xl mx-auto">
-                Access all papers, including the most recent preprints and conference proceedings.
-            </p>
-            <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" 
-               target="_blank" 
-               class="scholar-btn inline-block mt-6 px-8 py-3.5 text-white rounded-full text-sm font-medium shadow-lg">
-                📄 View All Publications on Google Scholar
-            </a>
+      <div class="pub-year">
+        <div class="pub-year-label">2025</div>
+        <div>
+          <p>K. Ntontin, E. Lagunas, J. Querol, J. ur Rehman, J. Grotz, S. Chatzinotas, and B. Ottersten, "A vision, survey, and roadmap toward space communications in the 6G and beyond era," <em>Proceedings of the IEEE</em>, pp. 1–37, 2025.
+            <span class="pub-links"><a href="https://doi.org/10.1109/JPROC.2024.3512934" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>H. Al-Hraishawi, M. Alsenwi, J. ur Rehman, E. Lagunas, and S. Chatzinotas, "Digital twin for enhanced resource allocation in 6G non-terrestrial networks," <em>IEEE Communications Magazine</em>, vol. 63, no. 3, pp. 47–53, Mar. 2025.
+            <span class="pub-links"><a href="https://doi.org/10.1109/MCOM.001.2400211" target="_blank" rel="noopener">Paper</a></span>
+          </p>
         </div>
-    </section>
+      </div>
 
-    <!-- ====== RESEARCH IMPACT ====== -->
-    <section class="fade-in fade-in-d2">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Research Themes -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 impact-card">
-                <h3 class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <span>🔬</span> Research Themes
-                </h3>
-                <div class="space-y-3">
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">Quantum Communications</p>
-                        <p class="text-xs text-slate-500">Channel capacity, security protocols, MIMO quantum channels</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">Quantum Computing</p>
-                        <p class="text-xs text-slate-500">Algorithms for communication systems, optimization, NISQ devices</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">Quantum Sensing & Metrology</p>
-                        <p class="text-xs text-slate-500">Multiple-phase estimation, NOON states, quantum-enhanced measurements</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">Quantum Networks</p>
-                        <p class="text-xs text-slate-500">Anonymous protocols, entanglement routing, NISQ network engineering</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Global Reach -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 impact-card">
-                <h3 class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <span>🌍</span> Global Reach
-                </h3>
-                <div class="space-y-3">
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">🇸🇦 King Fahd University</p>
-                        <p class="text-xs text-slate-500">Department of Electrical Engineering, Saudi Arabia</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">🇱🇺 University of Luxembourg</p>
-                        <p class="text-xs text-slate-500">SIGCOM Group, SnT – interdisciplinary research</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">🇰🇷 Kyung Hee University</p>
-                        <p class="text-xs text-slate-500">Quantum information research group, Korea</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">🇰🇷 KIST</p>
-                        <p class="text-xs text-slate-500">Korea Institute of Science and Technology</p>
-                    </div>
-                    <div>
-                        <p class="font-medium text-slate-700 text-sm">🌐 International Collaborations</p>
-                        <p class="text-xs text-slate-500">Vietnam, UK, Canada, and beyond</p>
-                    </div>
-                </div>
-            </div>
-
+      <div class="pub-year">
+        <div class="pub-year-label">2024</div>
+        <div>
+          <p>J. ur Rehman, H. Al-Hraishawi, T. Q. Duong, S. Chatzinotas, and H. Shin, "On estimating time-varying Pauli noise," <em>IEEE Transactions on Communications</em>, vol. 72, no. 4, pp. 2079–2089, Apr. 2024.
+            <span class="pub-links"><a href="https://doi.org/10.1109/TCOMM.2023.3341886" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>U. Khalid, J. ur Rehman, S. N. Paing, H. Jung, T. Q. Duong, and H. Shin, "Quantum network engineering in the NISQ age: principles, missions, and challenges," <em>IEEE Network</em>, vol. 38, no. 1, pp. 112–123, Jan. 2024.
+            <span class="pub-links"><a href="https://doi.org/10.1109/MNET.2023.3328892" target="_blank" rel="noopener">Paper</a></span>
+          </p>
         </div>
-    </section>
+      </div>
 
-    <!-- ====== SELECTED PUBLICATIONS ====== -->
-    <section class="fade-in fade-in-d3">
-        <div class="flex items-center gap-4 mb-6">
-            <h2 class="section-title text-2xl md:text-3xl text-slate-800">Selected Publications</h2>
-            <span class="status-badge badge-published">Featured</span>
+      <div class="pub-year">
+        <div class="pub-year-label">2023</div>
+        <div>
+          <p>M. T. Rahim, A. Khan, U. Khalid, J. ur Rehman, H. Jung, and H. Shin, "Quantum secure metrology for network sensing-based applications," <em>Scientific Reports</em>, vol. 13, p. 11630, Jul. 2023.
+            <span class="pub-links"><a href="https://doi.org/10.1038/s41598-023-38802-6" target="_blank" rel="noopener">Paper</a></span>
+          </p>
         </div>
-        
-        <div class="space-y-1">
+      </div>
 
-            <!-- 2025 -->
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-4 mb-2">2025</div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2025</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">J. Ur Rehman, L. Oleynik, S. Koudia, M. Bayraktar, and S. Chatzinotas</span>
-                            "Diversity and Multiplexing in Quantum MIMO Channels"
-                            <span class="italic text-slate-600">EPJ Quantum Technol.</span>, vol. 12, no. 1, pp. 18, 2025.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1140/epjqt/s40507-025-00324-7" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2025</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">U. Khalid, J. Ur Rehman, H. Jung, T. Q. Duong, O. A. Dobre, and H. Shin</span>
-                            "Quantum Property Learning for NISQ Networks: Universal Quantum Witness Machines"
-                            <span class="italic text-slate-600">IEEE Trans. Commun.</span>, vol. 73, no. 4, pp. 2207–2221, 2025.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1109/TCOMM.2024.3469555" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2025</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">I. Maity, J. ur Rehman, and S. Chatzinotas</span>
-                            "TAQNet: Traffic-Aware Minimum-Cost Quantum Communication Network Planning"
-                            <span class="italic text-slate-600">IEEE Trans. Quantum Eng.</span>, vol. 6, pp. 1–16, 2025.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1109/TQE.2024.3509019" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2024 -->
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">2024</div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2024</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">H. Al-Hraishawi, J. Ur Rehman, M. Razavi, and S. Chatzinotas</span>
-                            "Characterizing and Utilizing the Interplay Between Quantum Technologies and Non-Terrestrial Networks"
-                            <span class="italic text-slate-600">IEEE Open J. Commun. Soc.</span>, vol. 5, pp. 1937–1957, 2024.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1109/OJCOMS.2024.3380508" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2024</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">J. ur Rehman, H. Al-Hraishawi, T. Q. Duong, S. Chatzinotas, and H. Shin</span>
-                            "On Estimating Time-Varying Pauli Noise"
-                            <span class="italic text-slate-600">IEEE Trans. Commun.</span>, vol. 72, no. 4, pp. 2079–2089, 2024.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1109/TCOMM.2023.3341886" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2022 -->
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">2022</div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2022</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">A. Khan, U. Khalid, J. ur Rehman, and H. Shin</span>
-                            "Quantum Anonymous Private Information Retrieval for Distributed Networks"
-                            <span class="italic text-slate-600">IEEE Trans. Commun.</span>, vol. 70, no. 6, pp. 4026–4037, 2022.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1109/TCOMM.2022.3168079" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2022</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">J. ur Rehman, S. Hong, Y.-S. Kim, and H. Shin</span>
-                            "Variational Estimation of Capacity Bounds for Quantum Channels"
-                            <span class="italic text-slate-600">Phys. Rev. A</span>, vol. 105, no. 3, pp. 032616, 2022.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1103/PhysRevA.105.032616" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2021 -->
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">2021</div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2021</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">J. ur Rehman and H. Shin</span>
-                            "Entanglement-Free Parameter Estimation of Generalized Pauli Channels"
-                            <span class="italic text-slate-600">Quantum</span>, vol. 5, pp. 490, 2021.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.22331/q-2021-07-01-490" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2021</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">S. Hong, J. ur Rehman, Y.-S. Kim, Y.-W. Cho, S.-W. Lee, H. Jung, S. Moon, S.-W. Han, and H.-T. Lim</span>
-                            "Quantum Enhanced Multiple-Phase Estimation with Multi-Mode N00N States"
-                            <span class="italic text-slate-600">Nat Commun</span>, vol. 12, no. 1, pp. 5211, 2021.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1038/s41467-021-25451-4" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2019 -->
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">2019</div>
-
-            <div class="pub-entry">
-                <div class="flex flex-col md:flex-row md:items-start gap-2">
-                    <span class="pub-year text-sm md:text-base">2019</span>
-                    <div>
-                        <p class="text-slate-800 text-sm md:text-base">
-                            <span class="font-medium">J. ur Rehman, Y. Jeong, and H. Shin</span>
-                            "Directly Estimating the Holevo Capacity of Discrete Weyl Channels"
-                            <span class="italic text-slate-600">Phys. Rev. A</span>, vol. 99, no. 4, pp. 042312, 2019.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-1">
-                            <a href="https://doi.org/10.1103/PhysRevA.99.042312" class="text-xs text-indigo-600 hover:underline" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <div class="pub-year">
+        <div class="pub-year-label">2022</div>
+        <div>
+          <p>D. Lee, J. Lee, S. Hong, H.-T. Lim, Y.-W. Cho, S.-W. Han, H. Shin, J. ur Rehman, and Y.-S. Kim, "Error-mitigated photonic variational quantum eigensolver using a single-photon ququart," <em>Optica</em>, vol. 9, no. 1, pp. 88–95, Jan. 2022.
+            <span class="pub-links"><a href="https://doi.org/10.1364/OPTICA.441163" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>J. ur Rehman, S. Hong, S.-W. Lee, Y.-S. Kim, Y.-W. Cho, H. Jung, S. Moon, H. Shin, S.-W. Han, and H.-T. Lim, "Optimal strategy for multiple-phase estimation under practical measurement with multimode NOON states," <em>Physical Review A</em>, 106:032612, Sep. 2022.
+            <span class="pub-links"><a href="https://doi.org/10.1103/PhysRevA.106.032612" target="_blank" rel="noopener">Paper</a></span>
+          </p>
         </div>
-    </section>
+      </div>
 
+      <div class="pub-year">
+        <div class="pub-year-label">2021</div>
+        <div>
+          <p>S. Hong, J. ur Rehman, Y.-S. Kim, Y.-W. Cho, S.-W. Lee, H. Jung, S. Moon, S.-W. Han, and H.-T. Lim, "Quantum enhanced multiple-phase estimation with multi-mode <em>N</em>00<em>N</em> states," <em>Nature Communications</em>, vol. 12, p. 5211, Sep. 2021.
+            <span class="pub-links"><a href="https://doi.org/10.1038/s41467-021-25451-4" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>J. ur Rehman and H. Shin, "Entanglement-free parameter estimation of generalized Pauli channels," <em>Quantum</em>, 5:490, Jul. 2021.
+            <span class="pub-links"><a href="https://doi.org/10.22331/q-2021-07-01-490" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-year">
+        <div class="pub-year-label">2020</div>
+        <div>
+          <p>J. ur Rehman, A. Farooq, and H. Shin, "Discrete Weyl channels with Markovian memory," <em>IEEE Journal on Selected Areas in Communications</em>, vol. 38, no. 3, pp. 413–426, Mar. 2020.
+            <span class="pub-links"><a href="https://doi.org/10.1109/JSAC.2020.2968993" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-year">
+        <div class="pub-year-label">2019</div>
+        <div>
+          <p>J. ur Rehman, Y. Jeong, and H. Shin, "Directly estimating the Holevo capacity of discrete Weyl channels," <em>Physical Review A</em>, 99:042312, Apr. 2019.
+            <span class="pub-links"><a href="https://doi.org/10.1103/PhysRevA.99.042312" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>J. ur Rehman and H. Shin, "Purity-based continuity bounds for von Neumann entropy," <em>Scientific Reports</em>, 9:13912, Sep. 2019.
+            <span class="pub-links"><a href="https://doi.org/10.1038/s41598-019-50309-7" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-year">
+        <div class="pub-year-label">2018</div>
+        <div>
+          <p>J. ur Rehman, Y. Jeong, J. S. Kim, and H. Shin, "Holevo capacity of discrete Weyl channels," <em>Scientific Reports</em>, 8:17457, Nov. 2018.
+            <span class="pub-links"><a href="https://doi.org/10.1038/s41598-018-35777-7" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-year">
+        <div class="pub-year-label">2017</div>
+        <div>
+          <p>J. ur Rehman, S. Qaisar, Y. Jeong, and H. Shin, "Security of a control key in quantum key distribution," <em>Modern Physics Letters B</em>, vol. 31, no. 11, p. 1750119, Apr. 2017.
+            <span class="pub-links"><a href="https://doi.org/10.1142/S0217984917501196" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+          <p>S. Qaisar, J. ur Rehman, Y. Jeong, and H. Shin, "Practical deterministic secure quantum communication in a lossy channel," <em>Progress of Theoretical and Experimental Physics</em>, vol. 2017, no. 4, p. 041A01, Apr. 2017.
+            <span class="pub-links"><a href="https://doi.org/10.1093/ptep/ptx034" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-year">
+        <div class="pub-year-label">2016</div>
+        <div>
+          <p>T. Bashir, I. Usman, and J. ur Rehman, "Secure digital watermarking using optimized improved spread spectrum and BCH coding for DIBR 3D-TV system," <em>Multimedia Tools and Applications</em>, vol. 75, no. 13, pp. 7697–7713, Jul. 2016.
+            <span class="pub-links"><a href="https://doi.org/10.1007/s11042-015-2689-z" target="_blank" rel="noopener">Paper</a></span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="text-muted">This page highlights a selected set of publications only. The PI's <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile</a> contains the full and up-to-date list of publications.</p>
+    </div>
+  </section>
 </main>
 
-
-   <!-- ================= LOAD NAVIGATION ================= -->
-    <!-- This loads the navigation from navigation.html -->
-    <script src="load-nav.js"></script>
+<div id="site-footer"></div>
+<script src="assets/js/include.js"></script>
 </body>
 </html>

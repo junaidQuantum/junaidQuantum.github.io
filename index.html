@@ -1,377 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Quantum Nexus Lab | KFUPM</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.7;
-        }
-        html { scroll-behavior: smooth; }
-
-        /* Navigation styles are now in load-nav.js, but we keep them here as fallback */
-        .nav-link {
-            position: relative;
-            color: #94a3b8;
-            transition: color 0.2s;
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .nav-link:hover {
-            color: #ffffff;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #818cf8;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .nav-link.active {
-            color: #ffffff;
-        }
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(145deg, #0b1120 0%, #1a2a4a 40%, #1e3a5f 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-gradient::before,
-        .hero-gradient::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            pointer-events: none;
-            animation: float 12s ease-in-out infinite alternate;
-        }
-        .hero-gradient::before {
-            width: 500px;
-            height: 500px;
-            background: #4f46e5;
-            top: -200px;
-            right: -100px;
-        }
-        .hero-gradient::after {
-            width: 400px;
-            height: 400px;
-            background: #7c3aed;
-            bottom: -150px;
-            left: -100px;
-            animation-delay: 4s;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -30px) scale(1.1); }
-        }
-
-        .quantum-dots {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .quantum-dots span {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite alternate;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.1; transform: scale(0.8); }
-            100% { opacity: 0.6; transform: scale(1.2); }
-        }
-
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e9edf4;
-        }
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
-            border-color: #818cf8;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 48px;
-            height: 4px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            border-radius: 4px;
-        }
-
-        .member-card {
-            transition: all 0.25s ease;
-            border: 1px solid #e9edf4;
-        }
-        .member-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 24px -8px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-number {
-            font-weight: 700;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        .fade-in-d1 { animation-delay: 0.05s; }
-        .fade-in-d2 { animation-delay: 0.15s; }
-        .fade-in-d3 { animation-delay: 0.30s; }
-        .fade-in-d4 { animation-delay: 0.45s; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Nexus Lab — KFUPM</title>
+<meta name="description" content="Quantum Nexus Lab at King Fahd University of Petroleum &amp; Minerals researches quantum communications, quantum computing, and quantum sensing.">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <!-- ================= NAVIGATION (LOADED BY JAVASCRIPT) ================= -->
-    <!-- The navigation will be injected here by load-nav.js -->
-    <div id="navigation-container"></div>
+<div id="site-nav"></div>
 
-    <!-- ================= HERO ================= -->
-    <header class="hero-gradient text-white pt-28 pb-20 px-6 relative">
-        <div class="quantum-dots">
-            <!-- Generated with JS below -->
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Department of Electrical Engineering &middot; KFUPM</div>
+      <h1>Quantum Nexus Lab</h1>
+      <p class="lede">We study the fundamentals of quantum information sciences — the performance limits of quantum communication channels and the use of quantum computing to solve practical problems in communication systems.</p>
+      <div class="hero-actions">
+        <a href="research.html" class="btn btn-primary">Our Research</a>
+        <a href="team.html" class="btn">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="mt-0">Research Areas</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <span class="tag">Communications</span>
+          <h3>Quantum Communications</h3>
+          <p>Channel capacity and performance limits of quantum communication channels, and the foundations of secure quantum key distribution.</p>
         </div>
-        <div class="max-w-5xl mx-auto relative z-10">
-            <div class="text-center">
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm text-indigo-200/80 border border-white/5 mb-6">
-                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    KFUPM &bull; Department of Electrical Engineering
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-                    Quantum Nexus Lab
-                </h1>
-                <p class="text-xl md:text-2xl text-indigo-200/80 font-light mt-4 max-w-2xl mx-auto">
-                    The nexus of quantum information sciences
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 mt-8">
-                    <a href="research.html" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-full text-sm font-medium transition shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40">
-                        Explore Our Research
-                    </a>
-                    <a href="members.html" class="px-8 py-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full text-sm font-medium border border-white/10 transition">
-                        Meet the Team
-                    </a>
-                </div>
-            </div>
+        <div class="card">
+          <span class="tag">Computing</span>
+          <h3>Quantum Computing</h3>
+          <p>Applying quantum algorithms to problems of practical interest in communication systems.</p>
         </div>
-    </header>
+        <div class="card">
+          <span class="tag">Sensing</span>
+          <h3>Quantum Sensing &amp; Metrology</h3>
+          <p>Phase and parameter estimation, and measurement strategies that approach fundamental sensitivity limits.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Theory</span>
+          <h3>Theoretical Foundations</h3>
+          <p>Quantum information theory, probability theory, linear algebra, and complexity theory underpinning the above.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ================= MAIN CONTENT ================= -->
-    <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="mt-0">About the Lab</h2>
+      </div>
+      <p>Quantum Nexus Lab is led by <a href="team.html">Dr. Junaid ur Rehman</a>, Assistant Professor in the Department of Electrical Engineering at King Fahd University of Petroleum &amp; Minerals (KFUPM), Dhahran, Saudi Arabia. The lab brings together students and collaborators working on the theory and practice of quantum information science, with past and ongoing collaborations spanning Kyung Hee University, the Korea Institute of Science and Technology, and the University of Luxembourg's SIGCOM group.</p>
+      <p>We are actively looking for motivated graduate students and postdoctoral researchers — see <a href="team.html">Team</a> for open positions, or <a href="contact.html">get in touch</a>.</p>
+    </div>
+  </section>
 
-        <!-- ====== STATS ====== -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-6 fade-in fade-in-d1">
-            <div class="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
-                <div class="stat-number text-4xl">10+</div>
-                <div class="text-slate-600 text-sm mt-1">Active Researchers</div>
-            </div>
-            <div class="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
-                <div class="stat-number text-4xl">25+</div>
-                <div class="text-slate-600 text-sm mt-1">Journal Papers</div>
-            </div>
-            <div class="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
-                <div class="stat-number text-4xl">5</div>
-                <div class="text-slate-600 text-sm mt-1">Active Projects</div>
-            </div>
-            <div class="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
-                <div class="stat-number text-4xl">3</div>
-                <div class="text-slate-600 text-sm mt-1">International Collaborations</div>
-            </div>
-        </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="mt-0">Selected Publications</h2>
+      </div>
+      <p class="text-muted">A curated selection of our work is listed on the <a href="publications.html">Publications page</a>, with the complete record on <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    </div>
+  </section>
+</main>
 
-        <!-- ====== RESEARCH AREAS ====== -->
-        <section id="research" class="fade-in fade-in-d2">
-            <h2 class="section-title text-3xl text-slate-800 mb-10">Research Areas</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-7 rounded-2xl card-hover border-l-4 border-l-indigo-500">
-                    <h3 class="text-xl font-semibold text-slate-800">Quantum Communications</h3>
-                    <p class="text-slate-600 text-sm mt-2">
-                        Channel capacity, secure quantum key distribution, and performance limits of quantum communication channels.
-                    </p>
-                </div>
-                <div class="bg-white p-7 rounded-2xl card-hover border-l-4 border-l-purple-500">
-                    <h3 class="text-xl font-semibold text-slate-800">Quantum Computing</h3>
-                    <p class="text-slate-600 text-sm mt-2">
-                        Algorithms for practical problems in communication systems, quantum machine learning, and complexity theory.
-                    </p>
-                </div>
-                <div class="bg-white p-7 rounded-2xl card-hover border-l-4 border-l-cyan-500">
-                    <h3 class="text-xl font-semibold text-slate-800">Quantum Sensing</h3>
-                    <p class="text-slate-600 text-sm mt-2">
-                        Advanced measurement techniques, quantum metrology, and sensing protocols leveraging quantum principles.
-                    </p>
-                </div>
-                <div class="bg-white p-7 rounded-2xl card-hover border-l-4 border-l-emerald-500">
-                    <h3 class="text-xl font-semibold text-slate-800">Theoretical Foundations</h3>
-                    <p class="text-slate-600 text-sm mt-2">
-                        Quantum information theory, probability theory, linear algebra, and the mathematical underpinnings of quantum sciences.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== MEMBERS ====== -->
-        <section id="members" class="fade-in fade-in-d3">
-            <h2 class="section-title text-3xl text-slate-800 mb-10">Our Team</h2>
-            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- PI - You -->
-                <div class="member-card bg-white p-6 rounded-2xl text-center">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-2xl font-light mb-3 shadow-lg">
-                        JR
-                    </div>
-                    <h4 class="font-semibold text-slate-800">Dr. Junaid ur Rehman</h4>
-                    <p class="text-sm text-indigo-600 font-medium">Principal Investigator</p>
-                    <p class="text-xs text-slate-400 mt-1">Assistant Professor</p>
-                </div>
-                <!-- Placeholder for Postdoc 1 -->
-                <div class="member-card bg-white p-6 rounded-2xl text-center opacity-60 border-dashed">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 flex items-center justify-center text-slate-400 text-2xl font-light mb-3">
-                        ?
-                    </div>
-                    <h4 class="font-semibold text-slate-400">Postdoctoral Fellow</h4>
-                    <p class="text-sm text-slate-400">Position Available</p>
-                </div>
-                <!-- Placeholder for PhD 1 -->
-                <div class="member-card bg-white p-6 rounded-2xl text-center opacity-60 border-dashed">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 flex items-center justify-center text-slate-400 text-2xl font-light mb-3">
-                        ?
-                    </div>
-                    <h4 class="font-semibold text-slate-400">PhD Student</h4>
-                    <p class="text-sm text-slate-400">Position Available</p>
-                </div>
-                <!-- Placeholder for MSc 1 -->
-                <div class="member-card bg-white p-6 rounded-2xl text-center opacity-60 border-dashed">
-                    <div class="w-24 h-24 mx-auto rounded-full bg-slate-200 flex items-center justify-center text-slate-400 text-2xl font-light mb-3">
-                        ?
-                    </div>
-                    <h4 class="font-semibold text-slate-400">MSc Student</h4>
-                    <p class="text-sm text-slate-400">Position Available</p>
-                </div>
-            </div>
-            <div class="text-center mt-6">
-                <a href="members.html" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">View all members →</a>
-            </div>
-        </section>
-
-        <!-- ====== HIGHLIGHTS / NEWS ====== -->
-        <section id="publications" class="fade-in fade-in-d4">
-            <h2 class="section-title text-3xl text-slate-800 mb-10">Recent Highlights</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                    <div>
-                        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-0.5 rounded-full">2026</span>
-                        <span class="text-slate-700 ml-2">Paper accepted in <span class="font-medium">Physical Review Letters</span></span>
-                    </div>
-                    <span class="text-sm text-slate-400">New results on quantum channel capacity</span>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                    <div>
-                        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-0.5 rounded-full">2026</span>
-                        <span class="text-slate-700 ml-2">Dr. ur Rehman serves on <span class="font-medium">IEEE ICC TPC</span></span>
-                    </div>
-                    <span class="text-sm text-slate-400">International Communications Conference</span>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
-                    <div>
-                        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-0.5 rounded-full">2025</span>
-                        <span class="text-slate-700 ml-2">New collaboration with <span class="font-medium">University of Luxembourg</span></span>
-                    </div>
-                    <span class="text-sm text-slate-400">SIGCOM group</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== CONTACT ====== -->
-        <section id="contact" class="fade-in fade-in-d4">
-            <h2 class="section-title text-3xl text-slate-800 mb-10">Contact Us</h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-slate-800">Quantum Nexus Lab</h4>
-                        <p class="text-slate-600 text-sm mt-1">Department of Electrical Engineering</p>
-                        <p class="text-slate-600 text-sm">King Fahd University of Petroleum & Minerals</p>
-                        <p class="text-slate-600 text-sm">Dhahran, Saudi Arabia</p>
-                        <p class="text-slate-600 text-sm mt-4">✉️ <a href="contact.html" class="text-indigo-600 hover:underline">Contact us</a></p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-slate-800">Connect with Us</h4>
-                        <div class="flex flex-wrap gap-3 mt-2">
-                            <a href="https://scholar.google.com/citations?user=EptCk9MAAAAJ&hl=en" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-indigo-50 rounded-full text-sm text-slate-700 hover:text-indigo-700 transition">Google Scholar</a>
-                            <a href="https://www.linkedin.com/in/junaid-ur-rehman-ph-d-5825861b/" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-indigo-50 rounded-full text-sm text-slate-700 hover:text-indigo-700 transition">LinkedIn</a>
-                            <a href="https://www.researchgate.net/profile/Junaid-Ur-Rehman-3" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-indigo-50 rounded-full text-sm text-slate-700 hover:text-indigo-700 transition">ResearchGate</a>
-                            <a href="https://github.com/junaid572" target="_blank" class="px-4 py-2 bg-slate-100 hover:bg-indigo-50 rounded-full text-sm text-slate-700 hover:text-indigo-700 transition">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <!-- ================= LOAD NAVIGATION ================= -->
-    <!-- This loads the navigation from navigation.html -->
-    <script src="load-nav.js"></script>
-
-    <!-- ================= QUANTUM DOTS SCRIPT ================= -->
-    <script>
-        // Generate quantum dots in hero background
-        const dotsContainer = document.querySelector('.quantum-dots');
-        if (dotsContainer) {
-            for (let i = 0; i < 20; i++) {
-                const dot = document.createElement('span');
-                dot.style.left = Math.random() * 100 + '%';
-                dot.style.top = Math.random() * 100 + '%';
-                dot.style.width = dot.style.height = (Math.random() * 4 + 2) + 'px';
-                dot.style.animationDelay = (Math.random() * 5) + 's';
-                dot.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                dotsContainer.appendChild(dot);
-            }
-        }
-    </script>
-
+<div id="site-footer"></div>
+<script src="assets/js/include.js"></script>
 </body>
 </html>
