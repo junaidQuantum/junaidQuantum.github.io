@@ -300,8 +300,8 @@ img { max-width: 100%; }
 }
 
 .person-photo {
-  width: 96px;
-  height: 96px;
+  width: 176px;
+  height: 176px;
   border-radius: var(--radius);
   object-fit: cover;
   border: var(--border-width) solid var(--color-border);
@@ -309,8 +309,8 @@ img { max-width: 100%; }
 }
 
 .person-photo-placeholder {
-  width: 96px;
-  height: 96px;
+  width: 176px;
+  height: 176px;
   border-radius: var(--radius);
   border: var(--border-width) dashed var(--color-border);
   flex-shrink: 0;
