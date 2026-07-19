@@ -365,6 +365,36 @@ img { max-width: 100%; }
 }
 
 /* ---------------------------------------------------------------- */
+/* Projects list                                                     */
+/* ---------------------------------------------------------------- */
+.project-item {
+  display: flex;
+  gap: 1.4rem;
+  padding: 1.1rem 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+.project-item:first-of-type { border-top: none; }
+
+.project-duration {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  width: 9.5rem;
+  flex-shrink: 0;
+}
+
+.project-item h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.08rem;
+}
+
+.project-item p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------------- */
 /* Contact                                                            */
 /* ---------------------------------------------------------------- */
 .contact-grid {
