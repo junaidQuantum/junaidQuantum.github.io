@@ -323,6 +323,27 @@ img { max-width: 100%; }
   background: var(--color-bg-alt);
 }
 
+/* Stacked team members (students): same row layout as .person, smaller photo */
+.person-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.person-list .person-photo {
+  width: 120px;
+  height: 120px;
+}
+
+.person-list p { margin: 0 0 0.35rem 0; }
+.person-edu { margin: 0.15rem 0 0.4rem 0; padding-left: 1.1em; }
+.person-edu li { margin-bottom: 0.1rem; }
+.edu-years { white-space: nowrap; color: var(--color-text-muted); }
+.person-list .person-meta { margin: 0; }
+
+/* Text-only rows (no photo), e.g. MS students */
+.person-list-compact { gap: 1.25rem; }
+
 .person-role {
   color: var(--color-accent);
   font-size: 0.9rem;

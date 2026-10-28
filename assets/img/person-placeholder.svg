@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- Generic profile placeholder. Colors match color-bg-alt and color-border in style.css -->
+  <rect width="240" height="240" fill="#f2f0ea"/>
+  <circle cx="120" cy="98" r="42" fill="#d6d2c8"/>
+  <path d="M40 240C40 192 76 158 120 158S200 192 200 240Z" fill="#d6d2c8"/>
+</svg>
