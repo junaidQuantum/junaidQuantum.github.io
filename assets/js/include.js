@@ -39,6 +39,9 @@
       highlightActive();
       wireToggle();
     });
-    load('site-footer', 'partials/footer.html');
+    load('site-footer', 'partials/footer.html', function () {
+      var year = document.getElementById('footer-year');
+      if (year) year.textContent = new Date().getFullYear();
+    });
   });
 })();
