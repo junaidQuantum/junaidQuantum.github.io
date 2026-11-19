@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qubit Channels (EE608) — Quantum Nexus Lab</title>
+<meta name="description" content="Build qubit channels and see how they deform the Bloch ball. EE608, Lectures 8 and 9.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-channels.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="Qubit Channels (EE608) — Quantum Nexus Lab">
+<meta property="og:description" content="Build qubit channels and see how they deform the Bloch ball. EE608, Lectures 8 and 9.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-channels.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qubit Channels (EE608) — Quantum Nexus Lab">
+<meta name="twitter:description" content="Build qubit channels and see how they deform the Bloch ball. EE608, Lectures 8 and 9.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container sim-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › Qubit Channels</nav>
+      <div class="hero-eyebrow">EE608 &middot; Simulation 5 &middot; Lectures 8 and 9</div>
+      <h1>Qubit Channels</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sim-container sim-layout">
+
+      <!-- Left: Bloch ball and its image -->
+      <div class="sim-stage">
+        <div class="sim-card">
+          <canvas id="bloch" class="sim-canvas" aria-label="Bloch ball and its image under the channel"></canvas>
+        </div>
+        <div class="sim-row" style="margin-top:0.6rem;">
+          <button class="sim-btn" id="view-reset" type="button">Reset view</button>
+          <span class="sim-note" style="margin:0;">Drag to rotate the view.</span>
+        </div>
+        <p class="sim-note">Orange: the image of the Bloch sphere under the channel. Black dot: \(\mathcal N(\pi)\), the image of the maximally mixed state. Rings: the test states \(\rho\) and \(\sigma\); filled dots: \(\mathcal N(\rho)\) and \(\mathcal N(\sigma)\). The orange ring marks the pure state the channel preserves worst.</p>
+      </div>
+
+      <!-- Right: controls -->
+      <div>
+
+        <div class="sim-panel">
+          <h2>1. Build the channel</h2>
+          <p class="sim-readout">The channels act one after another, from top to bottom: \(\mathcal N = \mathcal N_k \circ \dots \circ \mathcal N_1\). Each one is given by Kraus operators with \(\mathcal N_i(\rho) = \sum_l V_l\,\rho\,V_l^\dagger\) and \(\sum_l V_l^\dagger V_l = I\).</p>
+          <div class="sim-row">
+            <span>Load:</span>
+            <button class="sim-btn" type="button" data-preset="deph">dephasing, \(p = \tfrac14\)</button>
+            <button class="sim-btn" type="button" data-preset="depol">depolarizing, \(p = 0.4\)</button>
+            <button class="sim-btn" type="button" data-preset="ad">amplitude damping, \(\gamma = \tfrac12\)</button>
+            <button class="sim-btn" type="button" data-preset="fiber">two fiber segments</button>
+            <button class="sim-btn" type="button" data-preset="probe">Eve's probe</button>
+          </div>
+          <div id="stages"></div>
+          <div class="sim-row" style="margin-top:0.6rem;">
+            <button class="sim-btn" type="button" id="add-stage">Add a channel</button>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. The channel on the Bloch ball</h2>
+          <div class="sim-readout" id="map-readout"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Two test states</h2>
+          <div class="sim-row"><strong>\(\rho\)</strong></div>
+          <label class="sim-slider"><span>Polar angle \(\theta\)</span><input type="range" id="r-th" min="0" max="180" step="1" value="90"><output id="r-th-out">90°</output></label>
+          <label class="sim-slider"><span>Azimuth \(\varphi\)</span><input type="range" id="r-ph" min="0" max="359" step="1" value="0"><output id="r-ph-out">0°</output></label>
+          <label class="sim-slider"><span>Length \(\lVert\vec r\rVert\)</span><input type="range" id="r-len" min="0" max="1" step="0.01" value="1"><output id="r-len-out">1.00</output></label>
+          <div class="sim-row" style="margin-top:0.6rem;"><strong>\(\sigma\)</strong></div>
+          <label class="sim-slider"><span>Polar angle \(\theta\)</span><input type="range" id="s-th" min="0" max="180" step="1" value="180"><output id="s-th-out">180°</output></label>
+          <label class="sim-slider"><span>Azimuth \(\varphi\)</span><input type="range" id="s-ph" min="0" max="359" step="1" value="0"><output id="s-ph-out">0°</output></label>
+          <label class="sim-slider"><span>Length \(\lVert\vec s\rVert\)</span><input type="range" id="s-len" min="0" max="1" step="0.01" value="1"><output id="s-len-out">1.00</output></label>
+          <div class="sim-scroll" id="test-readout" style="margin-top:0.6rem;"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>4. How well does the channel preserve states?</h2>
+          <div class="sim-readout" id="fid-readout"></div>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>Load the three Lecture 8 examples one at a time and describe how the ball is deformed. Which of them keep the center fixed, and what does that say about \(\mathcal N(\pi)\)?</li>
+            <li>For amplitude damping, which state does not move? What happens to every input at \(\gamma = 1\)?</li>
+            <li>Load the two fiber segments. Show that together they act as amplitude damping with \(1 - \gamma = (1-\gamma_1)(1-\gamma_2)\) by comparing \(T\) and \(\vec t\) with a single segment.</li>
+            <li>Try to choose \(\rho\) and \(\sigma\) so that their trace distance grows after the channel. Explain why you cannot (Lecture 9).</li>
+            <li>For the dephasing channel, find \(F_{\min}\) and the inputs where it is reached. Check that the fidelity for the BB84 states equals \(1 - Q\) with \(Q = p/2\).</li>
+            <li>Set a phase flip with \(p = \tfrac12\). Show by hand that the Kraus operators \(\{\ket{0}\!\bra{0}, \ket{1}\!\bra{1}\}\) give the same \(T\) and \(\vec t\) as \(\{I/\sqrt2, Z/\sqrt2\}\).</li>
+            <li>Load Eve's probe. For which \(p\) does a phase flip give the same map? Relate your answer to the \(X\)-basis error \(\tfrac12\left(1 - \cos\tfrac{\theta}{2}\right)\).</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script src="assets/js/sim-tex.js"></script>
+<script src="assets/js/include.js"></script>
+<script src="assets/js/sim-channels.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

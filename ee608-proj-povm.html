@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projective Measurement versus POVM (EE608) — Quantum Nexus Lab</title>
+<meta name="description" content="Two experiments where a POVM does what no projective measurement on a qubit can. EE608, Lectures 8 and 9.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-proj-povm.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="Projective Measurement versus POVM (EE608) — Quantum Nexus Lab">
+<meta property="og:description" content="Two experiments where a POVM does what no projective measurement on a qubit can. EE608, Lectures 8 and 9.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-proj-povm.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projective Measurement versus POVM (EE608) — Quantum Nexus Lab">
+<meta name="twitter:description" content="Two experiments where a POVM does what no projective measurement on a qubit can. EE608, Lectures 8 and 9.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container sim-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › Projective Measurement versus POVM</nav>
+      <div class="hero-eyebrow">EE608 &middot; Simulation 4 &middot; Lectures 8 and 9</div>
+      <h1>Projective Measurement versus POVM</h1>
+      <p class="lede">A projective measurement on a qubit has at most two outcomes; a POVM can have more. Both experiments below depend on that difference.</p>
+    </div>
+  </section>
+
+  <!-- ================= Part 1: elimination game ================= -->
+  <section class="section">
+    <div class="container sim-container">
+      <h2 class="mt-0">Part 1. Name a state that was not sent</h2>
+    </div>
+    <div class="container sim-container sim-layout" style="margin-top:1rem;">
+
+      <div class="sim-stage">
+        <div class="sim-card">
+          <canvas id="el-disk" class="sim-canvas" aria-label="The three trine states and the measurement in the X–Z plane"></canvas>
+        </div>
+        <p class="sim-note">The \(X\)–\(Z\) plane of the Bloch sphere. Blue: the three states Bob may send. Orange: the measurement. In projective mode, drag the end of the axis to turn it.</p>
+        <div class="sim-panel" style="margin-top:0.8rem;">
+          <h2>Score</h2>
+          <div id="el-score"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sim-panel">
+          <h2>1. The game</h2>
+          <p class="sim-readout">Bob sends one of the trine states \(\ket{e_k} = \cos(2\pi k/3)\ket{0} + \sin(2\pi k/3)\ket{1}\), \(k = 0, 1, 2\), each with probability \(\tfrac13\). You measure it once and then name one of the three states. You win if Bob did <em>not</em> send the state you name.</p>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. Your measurement</h2>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-el-mode="proj" aria-pressed="true">Projective</button>
+            <button class="sim-btn" type="button" data-el-mode="povm" aria-pressed="false">POVM</button>
+          </div>
+          <div id="el-proj-controls">
+            <label class="sim-slider"><span>Axis angle \(\alpha\)</span>
+              <input type="range" id="el-alpha" min="0" max="179" step="1" value="0">
+              <output id="el-alpha-out">0°</output>
+            </label>
+            <p class="sim-note">You measure \(\hat n\cdot\vec\sigma\) with \(\hat n = (\sin\alpha, 0, \cos\alpha)\). After each outcome you name the state least likely to give that outcome; no other rule does better for this axis.</p>
+          </div>
+          <div id="el-povm-controls" class="sim-hidden">
+            <p class="sim-readout">\(\Lambda_k = \tfrac23\ket{e_k^\perp}\!\bra{e_k^\perp}\), \(k = 0, 1, 2\), where \(\ket{e_k^\perp}\) is orthogonal to \(\ket{e_k}\). For outcome \(k\), you name \(\ket{e_k}\).</p>
+          </div>
+          <div class="sim-scroll" id="el-table"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Play</h2>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="el-one">Play one round</button>
+            <button class="sim-btn primary" type="button" id="el-many">Play</button>
+            <select class="sim-select" id="el-n">
+              <option value="100">100 rounds</option>
+              <option value="1000" selected>1000 rounds</option>
+              <option value="10000">10000 rounds</option>
+            </select>
+            <button class="sim-btn" type="button" id="el-reset">Reset the scores</button>
+          </div>
+          <ul class="sim-log" id="el-log"></ul>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>In projective mode, turn the axis and find the angle \(\alpha\) with the highest winning probability. Show that the best value is \(1 - \tfrac{2 - \sqrt3}{6} \approx 0.955\).</li>
+            <li>Why can no projective measurement on a qubit win every round? Think about how many outcomes it has and how many states must be excluded.</li>
+            <li>Switch to the POVM and look at the table. Which entries are zero, and why does that guarantee a win?</li>
+            <li>Show that \(\sum_k \tfrac23\ket{e_k^\perp}\!\bra{e_k^\perp} = I\), using the Bloch vectors of \(\ket{e_k^\perp}\).</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Part 2: hidden state ================= -->
+  <section class="section">
+    <div class="container sim-container">
+      <h2 class="mt-0">Part 2. Find the hidden state</h2>
+    </div>
+    <div class="container sim-container sim-layout" style="margin-top:1rem;">
+
+      <div class="sim-stage">
+        <div class="sim-card">
+          <canvas id="tm-bloch" class="sim-canvas" aria-label="Bloch sphere with the estimates of the hidden state"></canvas>
+        </div>
+        <div class="sim-row" style="margin-top:0.6rem;">
+          <button class="sim-btn" id="tm-view-reset" type="button">Reset view</button>
+          <span class="sim-note" style="margin:0;">Drag to rotate the view.</span>
+        </div>
+        <p class="sim-note">Dashed circles: the pure states that agree with your projective data (one circle per measured axis). Orange arrow: estimate from projective data. Blue arrow: estimate from POVM data. Black arrow: the hidden state, after you reveal it.</p>
+      </div>
+
+      <div>
+        <div class="sim-panel">
+          <h2>1. The task</h2>
+          <p class="sim-readout">Many copies of an unknown pure state \(\rho = \tfrac12(I + \vec r\cdot\vec\sigma)\) are available. Estimate \(\vec r\) by measuring copies. Each measurement setting is a separate apparatus, so count how many settings you need.</p>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" id="tm-new">New hidden state</button>
+            <button class="sim-btn" type="button" id="tm-reveal">Reveal the hidden state</button>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. Measure</h2>
+          <div class="sim-row">
+            <span>Copies per batch:</span>
+            <select class="sim-select" id="tm-batch">
+              <option value="10">10</option>
+              <option value="100" selected>100</option>
+              <option value="1000">1000</option>
+            </select>
+          </div>
+          <h3>Projective</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" data-tm-axis="0">Measure \(X\)</button>
+            <button class="sim-btn primary" type="button" data-tm-axis="1">Measure \(Y\)</button>
+            <button class="sim-btn primary" type="button" data-tm-axis="2">Measure \(Z\)</button>
+          </div>
+          <p class="sim-note">A measurement of \(\sigma_i\) has two outcomes and estimates one number, \(r_i = \langle \sigma_i\rangle\).</p>
+          <h3>POVM</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="tm-povm">Measure with the tetrahedral POVM</button>
+          </div>
+          <p class="sim-note">\(\Lambda_j = \tfrac12\ket{t_j}\!\bra{t_j}\), \(j = 1, \dots, 4\), with the Bloch vectors \(\hat n_j\) of \(\ket{t_j}\) at the corners of a regular tetrahedron. Then \(P(j) = \tfrac14\left(1 + \vec r\cdot\hat n_j\right)\) and \(\vec r = 3\sum_j P(j)\,\hat n_j\).</p>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Estimates</h2>
+          <div class="sim-scroll" id="tm-out"></div>
+          <div class="sim-row" style="margin-top:0.8rem;">
+            <button class="sim-btn" type="button" id="tm-restart">Start over</button>
+          </div>
+          <p class="sim-note">Clears all measurements and hides the state again. The hidden state stays the same, so you can try another strategy on it; use "New hidden state" for a different one.</p>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>Measure only \(Z\). Which pure states agree with your data? How many settings do you need before the state is pinned down?</li>
+            <li>Starting from a new hidden state, use only the tetrahedral POVM. How many settings does it take?</li>
+            <li>Derive \(\vec r = 3\sum_j P(j)\,\hat n_j\) from \(P(j) = \tfrac14(1 + \vec r\cdot\hat n_j)\), \(\sum_j \hat n_j = 0\) and \(\sum_j \hat n_j\hat n_j^{\mathsf T} = \tfrac43 I\).</li>
+            <li>Spend the same total number of copies on each strategy and compare the trace distances to the hidden state. Which strategy needs fewer settings for a similar error?</li>
+            <li>Why can no single projective measurement on a qubit do what the tetrahedral POVM does?</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script src="assets/js/sim-tex.js"></script>
+<script src="assets/js/include.js"></script>
+<script src="assets/js/sim-eliminate.js"></script>
+<script src="assets/js/sim-tomo.js"></script>
+<script>SimTeX.renderIn(document.querySelector('main'));</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

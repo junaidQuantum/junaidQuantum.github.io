@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EE608 Simulations — Quantum Nexus Lab</title>
+<meta name="description" content="Interactive simulations for EE608: Quantum Communications at KFUPM.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-simulations.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="EE608 Simulations — Quantum Nexus Lab">
+<meta property="og:description" content="Interactive simulations for EE608: Quantum Communications at KFUPM.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-simulations.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EE608 Simulations — Quantum Nexus Lab">
+<meta name="twitter:description" content="Interactive simulations for EE608: Quantum Communications at KFUPM.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › EE608 Simulations</nav>
+      <div class="hero-eyebrow">EE608: Quantum Communications</div>
+      <h1>EE608 Simulations</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+
+        <a class="card sim-entry" href="ee608-qubit.html">
+          <svg class="sim-thumb" viewBox="0 0 160 96" aria-hidden="true">
+            <circle cx="80" cy="48" r="38" fill="#f2f0ea" stroke="#5c6470" stroke-width="1.2"/>
+            <ellipse cx="80" cy="48" rx="38" ry="11" fill="none" stroke="#c9c4b8" stroke-dasharray="3 3"/>
+            <line x1="80" y1="6" x2="80" y2="90" stroke="#c9c4b8"/>
+            <line x1="62" y1="80" x2="98" y2="16" stroke="#b4532a" stroke-width="1.8" stroke-dasharray="5 4"/>
+            <line x1="80" y1="48" x2="104" y2="25" stroke="#1f3a5f" stroke-width="3"/>
+            <circle cx="104" cy="25" r="3.5" fill="#1f3a5f"/>
+          </svg>
+          <span class="sim-entry-num">1</span>
+          <h3>Qubit States and Measurement</h3>
+          <p>A Bloch sphere with rotation gates and measurements in any basis, including three measurements in a row.</p>
+          <p class="sim-entry-lec">Lectures 2 and 8</p>
+        </a>
+
+        <a class="card sim-entry" href="ee608-chsh.html">
+          <svg class="sim-thumb" viewBox="0 0 160 96" aria-hidden="true">
+            <circle cx="80" cy="48" r="38" fill="none" stroke="#5c6470" stroke-width="1.2"/>
+            <line x1="80" y1="48" x2="80" y2="12" stroke="#1f3a5f" stroke-width="3"/>
+            <line x1="80" y1="48" x2="116" y2="48" stroke="#1f3a5f" stroke-width="3"/>
+            <line x1="80" y1="48" x2="105.5" y2="22.5" stroke="#b4532a" stroke-width="3"/>
+            <line x1="80" y1="48" x2="54.5" y2="22.5" stroke="#b4532a" stroke-width="3"/>
+            <circle cx="80" cy="12" r="3" fill="#1f3a5f"/><circle cx="116" cy="48" r="3" fill="#1f3a5f"/>
+            <circle cx="105.5" cy="22.5" r="3" fill="#b4532a"/><circle cx="54.5" cy="22.5" r="3" fill="#b4532a"/>
+          </svg>
+          <span class="sim-entry-num">2</span>
+          <h3>The CHSH Game</h3>
+          <p>Play the CHSH game with shared entanglement, a classical strategy or a PR box, and compare the winning rates.</p>
+          <p class="sim-entry-lec">Lectures 3 and 6</p>
+        </a>
+
+        <a class="card sim-entry" href="ee608-bb84.html">
+          <svg class="sim-thumb" viewBox="0 0 160 96" aria-hidden="true">
+            <line x1="30" y1="12" x2="30" y2="80" stroke="#5c6470" stroke-width="1.2"/>
+            <line x1="30" y1="62" x2="140" y2="62" stroke="#202329" stroke-width="1"/>
+            <path d="M30 14 C 52 30, 72 50, 92 62 S 125 76, 140 80" fill="none" stroke="#1f3a5f" stroke-width="2.6"/>
+            <line x1="92" y1="10" x2="92" y2="84" stroke="#b4532a" stroke-width="1.6" stroke-dasharray="4 4"/>
+            <circle cx="60" cy="38" r="5" fill="#202329"/>
+          </svg>
+          <span class="sim-entry-num">3</span>
+          <h3>BB84 Quantum Key Distribution</h3>
+          <p>Run BB84 with an eavesdropper or a noisy channel and see how the error rate decides the secret key rate.</p>
+          <p class="sim-entry-lec">Lectures 6, 8, and 9</p>
+        </a>
+
+        <a class="card sim-entry" href="ee608-proj-povm.html">
+          <svg class="sim-thumb" viewBox="0 0 160 96" aria-hidden="true">
+            <circle cx="80" cy="48" r="38" fill="none" stroke="#5c6470" stroke-width="1.2"/>
+            <line x1="80" y1="48" x2="80" y2="10" stroke="#1f3a5f" stroke-width="3"/>
+            <line x1="80" y1="48" x2="47.1" y2="67" stroke="#1f3a5f" stroke-width="3"/>
+            <line x1="80" y1="48" x2="112.9" y2="67" stroke="#1f3a5f" stroke-width="3"/>
+            <line x1="80" y1="48" x2="80" y2="73.3" stroke="#b4532a" stroke-width="2.6"/>
+            <line x1="80" y1="48" x2="101.9" y2="35.3" stroke="#b4532a" stroke-width="2.6"/>
+            <line x1="80" y1="48" x2="58.1" y2="35.3" stroke="#b4532a" stroke-width="2.6"/>
+          </svg>
+          <span class="sim-entry-num">4</span>
+          <h3>Projective Measurement versus POVM</h3>
+          <p>Two experiments where a POVM succeeds and no projective measurement can: naming a state that was not sent, and finding a hidden state with one setting.</p>
+          <p class="sim-entry-lec">Lectures 8 and 9</p>
+        </a>
+
+        <a class="card sim-entry" href="ee608-channels.html">
+          <svg class="sim-thumb" viewBox="0 0 160 96" aria-hidden="true">
+            <circle cx="80" cy="48" r="38" fill="#f2f0ea" stroke="#5c6470" stroke-width="1.2"/>
+            <ellipse cx="80" cy="38" rx="27" ry="19" fill="none" stroke="#b4532a" stroke-width="2"/>
+            <ellipse cx="80" cy="38" rx="27" ry="7" fill="none" stroke="#b4532a" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="80" cy="38" r="3.5" fill="#202329"/>
+            <circle cx="80" cy="48" r="2" fill="#5c6470"/>
+          </svg>
+          <span class="sim-entry-num">5</span>
+          <h3>Qubit Channels</h3>
+          <p>Chain noise channels and see how they deform the Bloch ball, bring states closer together and lower the fidelity.</p>
+          <p class="sim-entry-lec">Lectures 8 and 9</p>
+        </a>
+
+      </div>
+
+      <p class="sim-note" style="margin-top:2rem;">These simulations were built with the help of an AI coding assistant. The physics, notation, and exercises follow the EE608 lectures and were checked by the instructor. If you find an error, please tell the instructor.</p>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/include.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

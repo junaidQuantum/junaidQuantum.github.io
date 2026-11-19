@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CHSH Game (EE608) — Quantum Nexus Lab</title>
+<meta name="description" content="Interactive CHSH game for EE608, Lectures 3 and 6.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-chsh.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="The CHSH Game (EE608) — Quantum Nexus Lab">
+<meta property="og:description" content="Interactive CHSH game for EE608, Lectures 3 and 6.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-chsh.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The CHSH Game (EE608) — Quantum Nexus Lab">
+<meta name="twitter:description" content="Interactive CHSH game for EE608, Lectures 3 and 6.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container sim-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › The CHSH Game</nav>
+      <div class="hero-eyebrow">EE608 &middot; Simulation 2 &middot; Lectures 3 and 6</div>
+      <h1>The CHSH Game</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sim-container sim-layout">
+
+      <!-- Left: measurement directions and score -->
+      <div class="sim-stage">
+        <div class="sim-card">
+          <canvas id="dirs" class="sim-canvas" aria-label="Measurement directions of Alice and Bob in the X–Z plane"></canvas>
+        </div>
+        <p class="sim-note">Observables in the \(X\)–\(Z\) plane of the Bloch sphere: \(A = \cos\alpha\, Z + \sin\alpha\, X\). Drag an arrow tip to change a direction. Alice's observables are blue, Bob's are orange.</p>
+
+        <div class="sim-panel" style="margin-top:0.8rem;">
+          <h2>Winning probability</h2>
+          <div id="score"></div>
+        </div>
+      </div>
+
+      <!-- Right: controls -->
+      <div>
+
+        <div class="sim-panel">
+          <h2>1. Rules</h2>
+          <div class="sim-readout">
+            <p>The referee draws bits \(x\) and \(y\) uniformly and sends \(x\) to Alice and \(y\) to Bob. Alice and Bob cannot communicate during the game. They return bits \(a\) and \(b\) and win if and only if</p>
+            \[x \wedge y = a \oplus b.\]
+            <p>In a quantum strategy, measurement outcome \(+1\) gives answer \(0\) and outcome \(-1\) gives answer \(1\).</p>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. Strategy</h2>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-mode="quantum" aria-pressed="true">Quantum</button>
+            <button class="sim-btn" type="button" data-mode="classical" aria-pressed="false">Classical</button>
+            <button class="sim-btn" type="button" data-mode="pr" aria-pressed="false">PR box</button>
+          </div>
+
+          <div id="quantum-controls">
+            <h3>Shared state</h3>
+            <div class="sim-row">
+              <button class="sim-btn" type="button" data-state="phi" aria-pressed="true">\(\ket{\Phi^+}\) with noise</button>
+              <button class="sim-btn" type="button" data-state="eve" aria-pressed="false">Eve's probe: \(\operatorname{Tr}_E \ket{\mathrm{GHZ}}\!\bra{\mathrm{GHZ}}\)</button>
+            </div>
+            <div id="noise-control">
+              <label class="sim-slider"><span>Fraction \(v\) of \(\ket{\Phi^+}\)</span>
+                <input type="range" id="vis" min="0" max="1" step="0.01" value="1">
+                <output id="vis-out">1.00</output>
+              </label>
+              <p class="sim-note">\(\rho = v\ket{\Phi^+}\!\bra{\Phi^+} + (1-v)\, I/4\).</p>
+            </div>
+            <p class="sim-note sim-hidden" id="eve-note">\(\rho = \tfrac12\left(\ket{00}\!\bra{00} + \ket{11}\!\bra{11}\right)\): the state of Alice and Bob after Eve's CNOT probe (Lectures 6 and 8).</p>
+
+            <h3>Measurement directions</h3>
+            <div class="sim-row">
+              <button class="sim-btn" type="button" id="preset-l3">Lecture 3 settings</button>
+              <button class="sim-btn" type="button" id="preset-zx">\(Z\) and \(X\) only</button>
+            </div>
+            <label class="sim-slider"><span>Alice, \(A(0)\): \(\alpha_0\)</span>
+              <input type="range" id="a0" min="-180" max="180" step="1" value="0">
+              <output id="a0-out">0°</output>
+            </label>
+            <label class="sim-slider"><span>Alice, \(A(1)\): \(\alpha_1\)</span>
+              <input type="range" id="a1" min="-180" max="180" step="1" value="90">
+              <output id="a1-out">90°</output>
+            </label>
+            <label class="sim-slider"><span>Bob, \(B(0)\): \(\beta_0\)</span>
+              <input type="range" id="b0" min="-180" max="180" step="1" value="45">
+              <output id="b0-out">45°</output>
+            </label>
+            <label class="sim-slider"><span>Bob, \(B(1)\): \(\beta_1\)</span>
+              <input type="range" id="b1" min="-180" max="180" step="1" value="-45">
+              <output id="b1-out">−45°</output>
+            </label>
+            <p class="sim-note">Lecture 3 settings: \(A(0) = Z\), \(A(1) = X\), \(B(0) = D_+\), \(B(1) = D_-\), with \(D_\pm = (Z \pm X)/\sqrt2\).</p>
+          </div>
+
+          <div id="classical-controls" class="sim-hidden">
+            <p class="sim-readout">A deterministic strategy fixes each answer in advance. Click a bit to flip it.</p>
+            <div class="sim-row">
+              <span>Alice:</span>
+              <button class="sim-btn" type="button" data-bit="a0"></button>
+              <button class="sim-btn" type="button" data-bit="a1"></button>
+            </div>
+            <div class="sim-row">
+              <span>Bob:</span>
+              <button class="sim-btn" type="button" data-bit="b0"></button>
+              <button class="sim-btn" type="button" data-bit="b1"></button>
+            </div>
+            <p class="sim-note">Shared randomness only averages over deterministic strategies, so it cannot do better than the best of them.</p>
+          </div>
+
+          <div id="pr-controls" class="sim-hidden">
+            <p class="sim-readout">A Popescu–Rohrlich box outputs \(a\) and \(b\) with \(a \oplus b = x \wedge y\) in every round, while each of \(a\) and \(b\) on its own is a fair coin. It does not allow signalling, but no physical system is known to behave like this.</p>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Correlations</h2>
+          <div id="exact"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>4. Play</h2>
+          <h3>One round</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="play-one">Play one round</button>
+          </div>
+          <ul class="sim-log" id="log"></ul>
+
+          <h3>Many rounds</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="play-many">Play</button>
+            <select class="sim-select" id="rounds">
+              <option value="100">100 rounds</option>
+              <option value="1000">1000 rounds</option>
+              <option value="10000" selected>10000 rounds</option>
+              <option value="100000">100000 rounds</option>
+            </select>
+          </div>
+          <div id="results"></div>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>With the Lecture 3 settings and \(v = 1\), play 100000 rounds. Compare the win rate with \(\cos^2(\pi/8)\) and the estimated \(S\) with \(2\sqrt2\).</li>
+            <li>Lower \(v\) until the win rate drops to \(3/4\). Show that \(S = 2\sqrt2\, v\) and find the value of \(v\) at which the quantum advantage disappears.</li>
+            <li>In the classical mode, go through the choices of \(a(0), a(1), b(0), b(1)\). Can any choice satisfy all four conditions? Relate your answer to the parity argument of Lecture 3.</li>
+            <li>Choose Eve's probe state with the Lecture 3 settings. Explain why \(E_{10} = E_{11} = 0\) and check that \(S = \sqrt2\).</li>
+            <li>Press "\(Z\) and \(X\) only" and then move the arrows only between \(Z\), \(X\), \(-Z\) and \(-X\). Show that \(|S| \le 2\) for every such choice.</li>
+            <li>After a run of many rounds, compare Alice's answers for \(y = 0\) and \(y = 1\). Can Bob send a message to Alice through his choice of \(y\)?</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script src="assets/js/sim-tex.js"></script>
+<script src="assets/js/include.js"></script>
+<script src="assets/js/sim-chsh.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

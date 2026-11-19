@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qubit States and Measurement (EE608) — Quantum Nexus Lab</title>
+<meta name="description" content="Interactive Bloch sphere for EE608, Lectures 2 and 8.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-qubit.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="Qubit States and Measurement (EE608) — Quantum Nexus Lab">
+<meta property="og:description" content="Interactive Bloch sphere for EE608, Lectures 2 and 8.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-qubit.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qubit States and Measurement (EE608) — Quantum Nexus Lab">
+<meta name="twitter:description" content="Interactive Bloch sphere for EE608, Lectures 2 and 8.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container sim-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › Qubit States and Measurement</nav>
+      <div class="hero-eyebrow">EE608 &middot; Simulation 1 &middot; Lectures 2 and 8</div>
+      <h1>Qubit States and Measurement</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sim-container sim-layout">
+
+      <!-- Left: the Bloch sphere -->
+      <div class="sim-stage">
+        <div class="sim-card">
+          <canvas id="bloch" class="sim-canvas" aria-label="Bloch sphere showing the current state and the measurement axis"></canvas>
+        </div>
+        <div class="sim-row" style="margin-top:0.6rem;">
+          <button class="sim-btn" id="view-reset" type="button">Reset view</button>
+          <span class="sim-note" style="margin:0;">Drag to rotate the view. The blue arrow is the state; the dashed orange line is the measurement axis.</span>
+        </div>
+      </div>
+
+      <!-- Right: controls and readouts -->
+      <div>
+
+        <div class="sim-panel">
+          <h2>1. Choose a state</h2>
+          <div class="sim-row" id="presets">
+            <button class="sim-btn" type="button" data-preset="0">\(\ket{0}\)</button>
+            <button class="sim-btn" type="button" data-preset="1">\(\ket{1}\)</button>
+            <button class="sim-btn" type="button" data-preset="+">\(\ket{+}\)</button>
+            <button class="sim-btn" type="button" data-preset="-">\(\ket{-}\)</button>
+            <button class="sim-btn" type="button" data-preset="+y">\(\ket{\iotap}\)</button>
+            <button class="sim-btn" type="button" data-preset="-y">\(\ket{\iotam}\)</button>
+            <button class="sim-btn" type="button" data-preset="pi">\(\pi = I/2\)</button>
+            <button class="sim-btn" type="button" data-preset="mix">\(\tfrac34\ket{0}\!\bra{0} + \tfrac14\ket{+}\!\bra{+}\)</button>
+          </div>
+          <label class="sim-slider"><span>Polar angle \(\theta\)</span>
+            <input type="range" id="theta" min="0" max="180" step="1" value="0">
+            <output id="theta-out">0°</output>
+          </label>
+          <label class="sim-slider"><span>Azimuth \(\varphi\)</span>
+            <input type="range" id="phi" min="0" max="359" step="1" value="0">
+            <output id="phi-out">0°</output>
+          </label>
+          <label class="sim-slider"><span>Length \(\lVert\vec r\rVert\)</span>
+            <input type="range" id="len" min="0" max="1" step="0.01" value="1">
+            <output id="len-out">1.00</output>
+          </label>
+          <p class="sim-note">Pure states have \(\lVert\vec r\rVert = 1\) and lie on the sphere. Mixed states have \(\lVert\vec r\rVert &lt; 1\).</p>
+          <div class="sim-question">
+            <strong>Question</strong>
+            <p>Choose a value of \(\lVert\vec r\rVert &lt; 1\), now change the polar and azimuth angle. The state changes correspondingly. Do the eigenvalues change? What can you conclude from this observation?</p>
+          </div>
+
+          <h3>Current state</h3>
+          <div class="sim-readout" id="state-readout"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. Apply a gate</h2>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-gate="X">\(X\)</button>
+            <button class="sim-btn" type="button" data-gate="Y">\(Y\)</button>
+            <button class="sim-btn" type="button" data-gate="Z">\(Z\)</button>
+            <button class="sim-btn" type="button" data-gate="H">\(H\)</button>
+          </div>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-rot="X">\(R_X(\phi)\)</button>
+            <button class="sim-btn" type="button" data-rot="Y">\(R_Y(\phi)\)</button>
+            <button class="sim-btn" type="button" data-rot="Z">\(R_Z(\phi)\)</button>
+            <label>\(\phi =\) <input class="sim-number" type="number" id="rot-angle" value="90" step="5"> °</label>
+          </div>
+          <p class="sim-note">\(R_X(\phi) = e^{iX\phi/2} = \cos(\phi/2)\, I + i\sin(\phi/2)\, X\), and similarly for \(R_Y\) and \(R_Z\). This rotates the Bloch vector by \(-\phi\) about the axis.</p>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Measure</h2>
+          <div class="sim-row">
+            <span>Observable:</span>
+            <button class="sim-btn" type="button" data-axis="Z" aria-pressed="true">\(Z\)</button>
+            <button class="sim-btn" type="button" data-axis="X" aria-pressed="false">\(X\)</button>
+            <button class="sim-btn" type="button" data-axis="Y" aria-pressed="false">\(Y\)</button>
+            <button class="sim-btn" type="button" data-axis="n" aria-pressed="false">\(\hat n\cdot\vec\sigma\)</button>
+          </div>
+          <div id="custom-axis" class="sim-hidden">
+            <label class="sim-slider"><span>Axis polar angle</span>
+              <input type="range" id="m-theta" min="0" max="180" step="1" value="45">
+              <output id="m-theta-out">45°</output>
+            </label>
+            <label class="sim-slider"><span>Axis azimuth</span>
+              <input type="range" id="m-phi" min="0" max="359" step="1" value="0">
+              <output id="m-phi-out">0°</output>
+            </label>
+          </div>
+          <div class="sim-readout" id="meas-readout"></div>
+
+          <h3>Single measurement</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="measure-one">Measure one copy</button>
+          </div>
+          <ul class="sim-log" id="log"></ul>
+
+          <h3>Repeated measurement</h3>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="measure-many">Measure</button>
+            <select class="sim-select" id="copies">
+              <option value="10">10 copies</option>
+              <option value="100">100 copies</option>
+              <option value="1000" selected>1000 copies</option>
+              <option value="10000">10000 copies</option>
+            </select>
+          </div>
+          <p class="sim-note">Each copy is prepared in the current state, so the arrow stays where it is.</p>
+          <div id="histogram"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>4. Three measurements in a row</h2>
+          <p class="sim-readout">1000 copies of the current state are measured in \(Z\), then \(X\), then \(Z\) again.</p>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="run-zxz">Run \(Z \to X \to Z\)</button>
+          </div>
+          <div id="zxz-result"></div>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>Prepare \(\ket{0}\) and run \(Z \to X \to Z\). In what fraction of the copies does the outcome of step 3 equal that of step 1? What would the fraction be without step 2?</li>
+            <li>Compute \(R_Z(\pi/2)\ket{+}\) by hand. Then apply \(R_Z(90^\circ)\) to \(\ket{+}\) and compare.</li>
+            <li>Prepare \(\ket{+}\) and measure 1000 copies in \(Z\), then 1000 copies in \(X\). Explain the difference between the two histograms.</li>
+            <li>For \(\cos(\pi/8)\ket{0} + \sin(\pi/8)\ket{1}\), find the axis \(\hat n\) for which the outcome \(+1\) is certain.</li>
+            <li>Select \(\tfrac34\ket{0}\!\bra{0} + \tfrac14\ket{+}\!\bra{+}\) and compare \(\rho\), \(\vec r\), and \(P(\rho)\) with your answer to the Lecture 8 question.</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script src="assets/js/sim-tex.js"></script>
+<script src="assets/js/include.js"></script>
+<script src="assets/js/sim-qubit.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

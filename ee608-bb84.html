@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BB84 Quantum Key Distribution (EE608) — Quantum Nexus Lab</title>
+<meta name="description" content="Interactive BB84 simulation for EE608, Lectures 6, 8, and 9.">
+<link rel="canonical" href="https://www.qnlab.org/ee608-bb84.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Nexus Lab">
+<meta property="og:title" content="BB84 Quantum Key Distribution (EE608) — Quantum Nexus Lab">
+<meta property="og:description" content="Interactive BB84 simulation for EE608, Lectures 6, 8, and 9.">
+<meta property="og:url" content="https://www.qnlab.org/ee608-bb84.html">
+<meta property="og:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BB84 Quantum Key Distribution (EE608) — Quantum Nexus Lab">
+<meta name="twitter:description" content="Interactive BB84 simulation for EE608, Lectures 6, 8, and 9.">
+<meta name="twitter:image" content="https://www.qnlab.org/assets/img/og-banner.png">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/sim.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="hero">
+    <div class="container sim-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › BB84</nav>
+      <div class="hero-eyebrow">EE608 &middot; Simulation 3 &middot; Lectures 6, 8, and 9</div>
+      <h1>BB84 Quantum Key Distribution</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sim-container sim-layout">
+
+      <!-- Left: charts -->
+      <div class="sim-stage">
+        <div class="sim-panel">
+          <h2>Information versus disturbance</h2>
+          <canvas id="chart-info" class="sim-chart" aria-label="Eve's guessing probability against Bob's error rate in the X basis"></canvas>
+          <p class="sim-note">Eve's probability of guessing a \(Z\)-basis key bit against Bob's error rate \(e\) in the \(X\) basis. The black dot marks the current settings.<br>Intercept and resend: \(P_{\text{guess}} = \tfrac12 + e\)<br>Controlled-rotation probe: \(P_{\text{guess}} = \tfrac12 + \sqrt{e(1-e)}\)</p>
+        </div>
+        <div class="sim-panel">
+          <h2>Secret key rate</h2>
+          <canvas id="chart-key" class="sim-chart" aria-label="Key rate against the quantum bit error rate"></canvas>
+          <p class="sim-note">\(r = 1 - 2h(Q)\) secret bits per sifted bit, with \(h\) the binary entropy. A key requires \(r &gt; 0\), that is \(Q \lesssim 11\%\).</p>
+        </div>
+      </div>
+
+      <!-- Right: controls -->
+      <div>
+
+        <div class="sim-panel">
+          <h2>1. Encoding</h2>
+          <div class="sim-readout">
+            <p>Alice encodes a random bit \(b_i\) in a random basis \(\beta_i \in \{Z, X\}\). Bob measures in his own random basis \(\beta_i'\).</p>
+            <table class="sim-table" style="max-width:22rem;">
+              <thead><tr><th>Bit</th><th>\(Z\) basis</th><th>\(X\) basis</th></tr></thead>
+              <tbody>
+                <tr><td>\(0\)</td><td>\(\ket{0}\)</td><td>\(\ket{+}\)</td></tr>
+                <tr><td>\(1\)</td><td>\(\ket{1}\)</td><td>\(\ket{-}\)</td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:0.7rem;">Eve may do anything to the qubits. She can listen to the classical channel but cannot forge messages on it.</p>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>2. Eve and the channel</h2>
+          <h3>Eve</h3>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-eve="none" aria-pressed="true">No eavesdropper</button>
+            <button class="sim-btn" type="button" data-eve="ir" aria-pressed="false">Intercept and resend</button>
+            <button class="sim-btn" type="button" data-eve="probe" aria-pressed="false">Controlled-rotation probe</button>
+          </div>
+          <div id="ir-controls" class="sim-hidden">
+            <label class="sim-slider"><span>Fraction intercepted \(f\)</span>
+              <input type="range" id="frac" min="0" max="1" step="0.01" value="1">
+              <output id="frac-out">1.00</output>
+            </label>
+            <p class="sim-note">Eve measures each intercepted qubit in a random basis and sends Bob the state she found.</p>
+          </div>
+          <div id="probe-controls" class="sim-hidden">
+            <label class="sim-slider"><span>Probe angle \(\theta\)</span>
+              <input type="range" id="theta" min="0" max="180" step="1" value="78">
+              <output id="theta-out">78°</output>
+            </label>
+            <p class="sim-note">Eve's probe starts in \(\ket{0}_E\). The controlled rotation maps \(\ket{1}\ket{0}_E \to \ket{1}\left(\cos\tfrac{\theta}{2}\ket{0}_E + \sin\tfrac{\theta}{2}\ket{1}_E\right)\) and leaves \(\ket{0}\ket{0}_E\) unchanged. At \(\theta = 180^\circ\) it is the CNOT.</p>
+          </div>
+
+          <h3>Channel noise</h3>
+          <div class="sim-row">
+            <button class="sim-btn" type="button" data-noise="none" aria-pressed="true">None</button>
+            <button class="sim-btn" type="button" data-noise="dephasing" aria-pressed="false">Dephasing</button>
+            <button class="sim-btn" type="button" data-noise="depolarizing" aria-pressed="false">Depolarizing</button>
+          </div>
+          <div id="noise-controls" class="sim-hidden">
+            <label class="sim-slider"><span>Noise parameter \(p\)</span>
+              <input type="range" id="p" min="0" max="0.5" step="0.005" value="0.1">
+              <output id="p-out">0.100</output>
+            </label>
+            <p class="sim-note" id="noise-note"></p>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>3. Twelve rounds</h2>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="send">Send 12 qubits</button>
+          </div>
+          <div id="rounds" class="sim-scroll"></div>
+        </div>
+
+        <div class="sim-panel">
+          <h2>4. Error rates and key</h2>
+          <div class="sim-row">
+            <button class="sim-btn primary" type="button" id="run">Run</button>
+            <select class="sim-select" id="n">
+              <option value="1000">1000 rounds</option>
+              <option value="10000" selected>10000 rounds</option>
+              <option value="100000">100000 rounds</option>
+            </select>
+          </div>
+          <div id="stats"></div>
+        </div>
+
+        <div class="sim-panel sim-try">
+          <h2>Exercises</h2>
+          <ol>
+            <li>With no eavesdropper and no noise, send a few batches of qubits. What fraction of the rounds survives sifting, and what is \(Q\)?</li>
+            <li>Let Eve intercept every qubit and run 100000 rounds. Check that \(Q = 25\%\) and that Eve's guesses agree with the sifted key in \(75\%\) of the rounds.</li>
+            <li>Show that intercepting a fraction \(f\) of the qubits gives \(Q = f/4\). Above which \(f\) do Alice and Bob abort?</li>
+            <li>Choose the dephasing channel and compare the error rates in the \(Z\) and \(X\) bases with the Lecture 8 result.</li>
+            <li>Choose the depolarizing channel. Find the largest \(p\) for which \(r &gt; 0\).</li>
+            <li>Choose the controlled-rotation probe and set \(\theta\) so that \(e = 11\%\). Compare Eve's guessing probability with the Lecture 9 value \(0.81\), and with intercept and resend at the same \(e\).</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script src="assets/js/sim-tex.js"></script>
+<script src="assets/js/include.js"></script>
+<script src="assets/js/sim-bb84.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a5f38cb0d60147c7ab9d23d81cf5a2db"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,260 @@
+/* =====================================================================
+   Shared styles for the EE608 simulation pages.
+   Builds on the variables in style.css; only sim-specific colors here.
+   ===================================================================== */
+
+:root {
+  --sim-measure: #b4532a;   /* measurement axis, outcome bars */
+  --sim-question: #1f56b8;  /* in-page questions */
+}
+
+.container.sim-container { max-width: 1120px; }
+
+.sim-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.sim-layout > * { min-width: 0; }   /* never let a canvas widen its column */
+.sim-stage { position: sticky; top: 1rem; }
+
+.sim-card,
+.sim-panel {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.sim-card { padding: 0.75rem; }
+.sim-panel { padding: 1rem 1.1rem; margin-bottom: 1rem; }
+.sim-panel h2 { font-size: 1.15rem; margin: 0 0 0.7rem; }
+.sim-panel h3 { font-size: 1rem; margin: 1rem 0 0.4rem; }
+
+.sim-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.sim-canvas:active { cursor: grabbing; }
+
+.sim-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.sim-btn {
+  font: inherit;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  padding: 0.32rem 0.65rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.sim-btn:hover { border-color: var(--color-accent); }
+.sim-btn.primary { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.sim-btn.primary:hover { background: var(--color-accent-dark); }
+.sim-btn[aria-pressed="true"] { background: var(--color-accent-soft); border-color: var(--color-accent); }
+
+.sim-select, .sim-number {
+  font: inherit;
+  font-size: 0.88rem;
+  padding: 0.28rem 0.4rem;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.sim-number { width: 4.6rem; }
+
+.sim-slider {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) 3.6rem;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+.sim-slider input[type="range"] { width: 100%; accent-color: var(--color-accent); }
+.sim-slider output { text-align: right; font-variant-numeric: tabular-nums; }
+
+.sim-readout { font-size: 0.9rem; line-height: 1.6; }
+.sim-readout p { margin: 0 0 0.5em; }
+
+.sim-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+.sim-table th, .sim-table td {
+  padding: 0.3rem 0.45rem;
+  border-bottom: var(--border-width) solid var(--color-border);
+  text-align: right;
+}
+.sim-table th:first-child, .sim-table td:first-child { text-align: left; }
+.sim-table th { font-weight: 600; color: var(--color-text-muted); }
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 6.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  margin: 0.3rem 0;
+  font-variant-numeric: tabular-nums;
+}
+.bar {
+  position: relative;
+  height: 0.95rem;
+  background: var(--color-bg-alt);
+  border-radius: 3px;
+}
+.bar > span {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--sim-measure);
+  border-radius: 3px;
+}
+.bar > span.alt { background: var(--color-accent); }
+/* thin marker for the Born-rule prediction */
+.bar > i {
+  position: absolute; top: -3px; bottom: -3px;
+  width: 2px; margin-left: -1px;
+  background: var(--color-text);
+}
+
+.sim-log {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.sim-log li { padding: 0.15rem 0; border-top: var(--border-width) solid var(--color-border); }
+
+/* LaTeX (KaTeX) sizing: KaTeX defaults to 1.21em, too large next to body text */
+.sim-layout .katex { font-size: 1.1em; }
+.sim-btn .katex { font-size: 1.05em; }
+.sim-readout .katex-display { margin: 0.5em 0; }
+
+/* HTML labels laid over a canvas */
+.sim-canvas-wrap { position: relative; }
+.sim-overlay { position: absolute; inset: 0; pointer-events: none; }
+.sim-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  line-height: 1;
+}
+.sim-label .katex { font-size: 1.15em; }
+.sim-label.small .katex { font-size: 0.82em; }
+.sim-label.left { transform: translate(0, -50%); }
+.sim-label.right { transform: translate(-100%, -50%); }
+
+/* Question box, styled after the "Question" boxes in the lecture slides */
+.sim-question {
+  margin: 0.8rem 0 0.4rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--sim-question);
+  background: #eef3fc;
+  color: var(--sim-question);
+  font-size: 0.9rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.sim-question strong { display: block; margin-bottom: 0.2rem; }
+.sim-question p { margin: 0; }
+
+/* Charts (canvas with TeX labels laid over it) */
+.sim-chart { display: block; width: 100%; max-width: 100%; aspect-ratio: 1.45 / 1; }
+
+/* Wide tables scroll inside their panel */
+.sim-scroll { overflow-x: auto; position: relative; }
+.sim-scroll .sim-table th, .sim-scroll .sim-table td { white-space: nowrap; }   /* relative: keeps KaTeX's hidden MathML inside the clip */
+
+/* Round-by-round protocol table: one column per round */
+.rounds-table { border-collapse: collapse; font-size: 0.86rem; margin-top: 0.4rem; }
+.rounds-table th {
+  text-align: left; font-weight: 600; color: var(--color-text-muted);
+  padding: 0.25rem 0.6rem 0.25rem 0; white-space: nowrap;
+}
+.rounds-table td {
+  text-align: center; padding: 0.25rem 0.3rem; min-width: 2.2rem;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+.rounds-table td.off { color: var(--color-text-muted); opacity: 0.45; }
+.rounds-table td.err { color: #b42318; font-weight: 600; }
+.key-line { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.08em; }
+.key-line .err { color: #b42318; font-weight: 700; }
+
+/* Editable tables (ensemble and POVM builders) */
+.edit-table td, .edit-table th { white-space: nowrap; }
+.edit-table input.sim-number { width: 4.4rem; padding: 0.2rem 0.3rem; }
+.edit-table .del {
+  font: inherit; font-size: 1rem; line-height: 1; padding: 0.15rem 0.45rem;
+  color: var(--color-text-muted); background: none; border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius); cursor: pointer;
+}
+.edit-table .del:hover { color: #b42318; border-color: #b42318; }
+.sim-ok { color: #2e7d32; font-weight: 600; }
+.sim-bad { color: #b42318; font-weight: 600; }
+
+/* Channel stages (one box per channel in a chain) */
+.stage {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.7rem;
+  margin-top: 0.6rem;
+  background: var(--color-bg);
+}
+.stage-head { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+.stage-head .del { margin-left: auto; }
+.stage .del {
+  font: inherit; font-size: 1rem; line-height: 1; padding: 0.15rem 0.45rem;
+  color: var(--color-text-muted); background: none; border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius); cursor: pointer;
+}
+.stage .del:hover { color: #b42318; border-color: #b42318; }
+.stage-kraus { font-size: 0.86rem; margin-top: 0.3rem; overflow-x: auto; position: relative; }
+
+/* Breadcrumb trail above the page title */
+.breadcrumb { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.8rem; }
+.breadcrumb a { color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); }
+.breadcrumb a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+/* Simulation list: each card is one link */
+a.sim-entry { display: block; color: inherit; border-bottom: var(--border-width) solid var(--color-border); transition: border-color 0.15s; }
+a.sim-entry:hover { border-color: var(--color-accent); }
+a.sim-entry:hover h3 { color: var(--color-accent); }
+.sim-thumb { display: block; width: 100%; max-width: 200px; height: auto; margin: 0 auto 0.8rem; }
+.sim-entry-num {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted);
+  border: var(--border-width) solid var(--color-border); border-radius: 999px; padding: 0 0.5rem; margin-bottom: 0.4rem;
+}
+.card p.sim-entry-lec { margin-top: 0.6rem; font-size: 0.82rem; color: var(--color-accent); }
+
+/* Round outcomes in the game logs */
+.sim-win { color: #2e7d32; font-weight: 600; }
+.sim-loss { color: #b42318; font-weight: 600; }
+
+.sim-note { font-size: 0.82rem; color: var(--color-text-muted); margin: 0.4rem 0 0; }
+.sim-hidden { display: none; }
+.nowrap { white-space: nowrap; }
+
+.sim-try ol { margin: 0; padding-left: 1.2rem; }
+.sim-try li { margin-bottom: 0.45rem; }
+
+@media (max-width: 860px) {
+  .sim-layout { grid-template-columns: minmax(0, 1fr); }
+  .sim-stage { position: static; }
+  .sim-slider { grid-template-columns: 6.8rem minmax(0, 1fr) 3.4rem; }
+}
