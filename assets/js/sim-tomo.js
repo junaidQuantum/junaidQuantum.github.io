@@ -119,6 +119,9 @@
   var cssVars = getComputedStyle(document.documentElement);
   function cssColor(name, fallback) { return cssVars.getPropertyValue(name).trim() || fallback; }
   var C = {
+    sphereLight: cssColor('--sim-sphere-light', 'rgba(255,255,255,0.55)'),
+    sphereShade: cssColor('--sim-sphere-shade', 'rgba(226,222,212,0.55)'),
+    sphereLine: cssColor('--sim-sphere-line', '#5c6470'),
     povm: cssColor('--color-accent', '#1f3a5f'),
     proj: cssColor('--sim-measure', '#b4532a'),
     text: cssColor('--color-text', '#202329'),
@@ -187,9 +190,9 @@
       [1, -1].forEach(function (s) { var t = scale(ax.v, s); if (dot(t, cam.fwd) < 0) line(O, proj3(scale(t, 1.12), cam), C.muted, 1, [3, 4]); });
     });
     var g = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
-    g.addColorStop(0, 'rgba(255,255,255,0.55)'); g.addColorStop(1, 'rgba(226,222,212,0.55)');
+    g.addColorStop(0, C.sphereLight); g.addColorStop(1, C.sphereShade);
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill();
-    ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
+    ctx.strokeStyle = C.sphereLine; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
     ctx.lineWidth = 1; ctx.strokeStyle = C.muted;
     CIRCLES.forEach(function (f) { curve(f, cam, true); });
     AXES.forEach(function (ax) {

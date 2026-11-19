@@ -67,32 +67,50 @@
   function mTeX(A) { return '\\begin{pmatrix} ' + tc(A[0]) + ' & ' + tc(A[1]) + ' \\\\ ' + tc(A[2]) + ' & ' + tc(A[3]) + ' \\end{pmatrix}'; }
 
   /* ---------- channel types ---------- */
-  // Each type: name, parameters, Kraus operators, and a TeX description of them.
+  // Each type: name, parameters, Kraus operators, and its definition (def: N = TeX name of the stage).
+  var RHO_M = '\\begin{pmatrix} 1-p & c \\\\ c^* & p \\end{pmatrix}';   // a qubit state, as in Lecture 8
   function pauliKraus(w) {   // w = [pI, pX, pY, pZ]
     return [I2, PX, PY, PZ].map(function (P, i) { return { M: mscale(P, Math.sqrt(Math.max(0, w[i]))), w: w[i], sym: ['I', 'X', 'Y', 'Z'][i] }; })
       .filter(function (k) { return k.w > 1e-12; });
   }
   var TYPES = {
     bitflip: { name: 'Bit flip', params: [['p', 'p', 0, 1, 0.01]],
+      def: function (s, N) { return m(N + '(\\rho) = (1-p)\\,\\rho + p\\,X\\rho X'); },
       kraus: function (s) { return pauliKraus([1 - s.p, s.p, 0, 0]); } },
     phaseflip: { name: 'Phase flip (dephasing)', params: [['p', 'p', 0, 1, 0.01]],
+      def: function (s, N) { return m(N + '(\\rho) = (1-p)\\,\\rho + p\\,Z\\rho Z'); },
       kraus: function (s) { return pauliKraus([1 - s.p, 0, 0, s.p]); } },
     bitphase: { name: 'Bit-phase flip', params: [['p', 'p', 0, 1, 0.01]],
+      def: function (s, N) { return m(N + '(\\rho) = (1-p)\\,\\rho + p\\,Y\\rho Y'); },
       kraus: function (s) { return pauliKraus([1 - s.p, 0, s.p, 0]); } },
     depol: { name: 'Depolarizing', params: [['p', 'p', 0, 1, 0.01]],
+      def: function (s, N) { return m(N + '(\\rho) = (1-p)\\,\\rho + p\\,\\pi'); },
       kraus: function (s) { return pauliKraus([1 - 3 * s.p / 4, s.p / 4, s.p / 4, s.p / 4]); } },
     pauli: { name: 'Pauli channel', params: [['px', 'p_X', 0, 1, 0.01], ['py', 'p_Y', 0, 1, 0.01], ['pz', 'p_Z', 0, 1, 0.01]],
+      def: function (s, N) {
+        return m(N + '(\\rho) = p_I\\,\\rho + p_X\\,X\\rho X + p_Y\\,Y\\rho Y + p_Z\\,Z\\rho Z') + ' with ' + m('p_I = 1 - p_X - p_Y - p_Z');
+      },
       kraus: function (s) { return pauliKraus([1 - s.px - s.py - s.pz, s.px, s.py, s.pz]); } },
     ad: { name: 'Amplitude damping', params: [['g', '\\gamma', 0, 1, 0.01]],
+      def: function (s, N) {
+        return m(N + '\\!' + RHO_M + ' = \\begin{pmatrix} 1-(1-\\gamma)\\,p & \\sqrt{1-\\gamma}\\,c \\\\ \\sqrt{1-\\gamma}\\,c^* & (1-\\gamma)\\,p \\end{pmatrix}');
+      },
       kraus: function (s) {
         return [{ M: [c(0), c(Math.sqrt(s.g)), c(0), c(0)], name: 'A_0' }, { M: [c(1), c(0), c(0), c(Math.sqrt(1 - s.g))], name: 'A_1' }];
       } },
     probe: { name: 'Eve\'s probe (Lecture 8)', params: [['th', '\\theta', 0, 180, 1]],
+      def: function (s, N) {
+        return m(N + '\\!' + RHO_M + ' = \\begin{pmatrix} 1-p & \\cos\\tfrac{\\theta}{2}\\,c \\\\ \\cos\\tfrac{\\theta}{2}\\,c^* & p \\end{pmatrix}');
+      },
       kraus: function (s) {
         var h = s.th * DEG / 2;
         return [{ M: [c(1), c(0), c(0), c(Math.cos(h))], name: 'B_0' }, { M: [c(0), c(0), c(0), c(Math.sin(h))], name: 'B_1' }];
       } },
     unitary: { name: 'Unitary rotation', params: [['phi', '\\phi', -180, 180, 1]], axis: true,
+      def: function (s, N) {
+        var R = 'R_' + s.axis + '(\\phi)';
+        return m(N + '(\\rho) = ' + R + '\\,\\rho\\,' + R + '^\\dagger') + ' with ' + m(R + ' = e^{+i' + s.axis + '\\phi/2}');
+      },
       kraus: function (s) {
         // Course convention: R_n(phi) = exp(+i phi sigma_n / 2) = cos(phi/2) I + i sin(phi/2) sigma_n.
         var h = s.phi * DEG / 2, P = { X: PX, Y: PY, Z: PZ }[s.axis];
@@ -220,7 +238,7 @@
       '<tr><td>Expected fidelity for the four BB84 states</td><td>' + num(1 - Q) + '</td></tr>' +
       '<tr><td>BB84 error rate ' + m('Q = 1 - F') + '</td><td>' + num(Q) + '</td></tr>' +
       '</tbody></table>' +
-      '<p class="sim-note">' + m('F_{\\min}') + ' is reached at ' + m('\\vec r = ' + vecTeX(fm.r)) + ' (orange ring on the sphere). The average is ' +
+      '<p class="sim-note">' + m('F_{\\min}') + ' is reached at ' + m('\\vec r = ' + vecTeX(fm.r)) + ' (red ring on the sphere). The average is ' +
       m('\\tfrac12 + \\operatorname{tr}(T)/6') + '.</p>';
   }
 
@@ -241,6 +259,7 @@
       return '<div class="stage"><div class="stage-head"><strong>' + m('\\mathcal N_' + (i + 1)) + '</strong>' +
         '<select class="sim-select" data-st-type="' + i + '">' + opts + '</select>' +
         '<button class="del" type="button" data-st-del="' + i + '" aria-label="Remove this channel">\u00D7</button></div>' +
+        '<div class="stage-def">' + T.def(s, '\\mathcal N_' + (i + 1)) + '</div>' +
         axis + T.params.map(function (p) { return sliderHTML(i, s, p); }).join('') +
         '<div class="stage-kraus" id="st-kraus-' + i + '"></div></div>';
     }).join('') || '<p class="sim-note">No channel: the identity.</p>';
@@ -255,7 +274,10 @@
   function cssColor(name, fallback) { return cssVars.getPropertyValue(name).trim() || fallback; }
   var C = {
     rho: cssColor('--color-accent', '#1f3a5f'),
-    sig: '#1f7a6d',
+    sig: cssColor('--sim-second', '#1f7a6d'),
+    sphereLight: cssColor('--sim-sphere-light', 'rgba(255,255,255,0.55)'),
+    sphereShade: cssColor('--sim-sphere-shade', 'rgba(226,222,212,0.55)'),
+    sphereLine: cssColor('--sim-sphere-line', '#5c6470'),
     img: cssColor('--sim-measure', '#b4532a'),
     text: cssColor('--color-text', '#202329'),
     muted: cssColor('--color-text-muted', '#5c6470'),
@@ -312,9 +334,9 @@
     CIRCLES.forEach(function (f) { curve(f, cam, false); });
     ctx.setLineDash([]);
     var g = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
-    g.addColorStop(0, 'rgba(255,255,255,0.5)'); g.addColorStop(1, 'rgba(226,222,212,0.5)');
+    g.addColorStop(0, C.sphereLight); g.addColorStop(1, C.sphereShade);
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill();
-    ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
+    ctx.strokeStyle = C.sphereLine; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
     ctx.lineWidth = 1; ctx.strokeStyle = C.border;
     CIRCLES.forEach(function (f) { curve(f, cam, true); });
     AXES.forEach(function (ax) {

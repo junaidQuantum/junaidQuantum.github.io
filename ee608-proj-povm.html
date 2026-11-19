@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/sim.css">
+<link rel="stylesheet" href="assets/css/sim-slides.css">
 </head>
 <body>
 
@@ -36,7 +37,6 @@
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="teaching.html">Teaching</a> › <a href="ee608-simulations.html">EE608 Simulations</a> › Projective Measurement versus POVM</nav>
       <div class="hero-eyebrow">EE608 &middot; Simulation 4 &middot; Lectures 8 and 9</div>
       <h1>Projective Measurement versus POVM</h1>
-      <p class="lede">A projective measurement on a qubit has at most two outcomes; a POVM can have more. Both experiments below depend on that difference.</p>
     </div>
   </section>
 
@@ -51,7 +51,7 @@
         <div class="sim-card">
           <canvas id="el-disk" class="sim-canvas" aria-label="The three trine states and the measurement in the X–Z plane"></canvas>
         </div>
-        <p class="sim-note">The \(X\)–\(Z\) plane of the Bloch sphere. Blue: the three states Bob may send. Orange: the measurement. In projective mode, drag the end of the axis to turn it.</p>
+        <p class="sim-note">The \(X\)–\(Z\) plane of the Bloch sphere. Green: the three states Bob may send. Red: the measurement. In projective mode, drag the end of the axis to turn it.</p>
         <div class="sim-panel" style="margin-top:0.8rem;">
           <h2>Score</h2>
           <div id="el-score"></div>
@@ -126,7 +126,7 @@
           <button class="sim-btn" id="tm-view-reset" type="button">Reset view</button>
           <span class="sim-note" style="margin:0;">Drag to rotate the view.</span>
         </div>
-        <p class="sim-note">Dashed circles: the pure states that agree with your projective data (one circle per measured axis). Orange arrow: estimate from projective data. Blue arrow: estimate from POVM data. Black arrow: the hidden state, after you reveal it.</p>
+        <p class="sim-note">Dashed circles: the pure states that agree with your projective data (one circle per measured axis). Red arrow: estimate from projective data. Green arrow: estimate from POVM data. Black arrow: the hidden state, after you reveal it.</p>
       </div>
 
       <div>
@@ -185,6 +185,7 @@
       </div>
     </div>
   </section>
+  <div class="beamer-footline"><span>Dr. Junaid ur Rehman (KFUPM)</span><span>EE608: Quantum Communications</span><span>Simulation 4 / 5</span></div>
 </main>
 
 <div id="site-footer"></div>

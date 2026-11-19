@@ -139,6 +139,8 @@
   var cssVars = getComputedStyle(document.documentElement);
   function cssColor(name, fallback) { return cssVars.getPropertyValue(name).trim() || fallback; }
   var C = {
+    discFill: cssColor('--sim-disc-fill', 'transparent'),
+    sphereLine: cssColor('--sim-sphere-line', '#5c6470'),
     alice: cssColor('--color-accent', '#1f3a5f'),
     bob: cssColor('--sim-measure', '#b4532a'),
     text: cssColor('--color-text', '#202329'),
@@ -178,8 +180,8 @@
     ctx.globalAlpha = alpha;
 
     // Circle, axes and the D directions.
-    ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2;
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = C.discFill; ctx.strokeStyle = C.sphereLine; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
     ctx.strokeStyle = C.border; ctx.lineWidth = 1;
     [0, 90].forEach(function (a) { var p = pt(a, R * 1.08), q = pt(a + 180, R * 1.08); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); });
     ctx.setLineDash([3, 4]);

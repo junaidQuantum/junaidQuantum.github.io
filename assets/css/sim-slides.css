@@ -1,0 +1,224 @@
+/* =====================================================================
+   Slide theme for the EE608 simulation pages.
+   Loaded after sim.css on the simulation pages only. Colors are sampled
+   from the EE608 Beamer slides; the font is Computer Modern Sans, the
+   same face the slides use (KaTeX ships it as KaTeX_SansSerif).
+   ===================================================================== */
+
+@font-face {
+  font-family: "CM Sans";
+  src: url("https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_SansSerif-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "CM Sans";
+  src: url("https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_SansSerif-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "CM Sans";
+  src: url("https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_SansSerif-Italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+:root {
+  --beamer-dark:        #194123;   /* navigation bar, middle of the footline */
+  --beamer-title:       #3a8347;   /* frame title bar */
+  --beamer-block-title: #296235;   /* block title strip */
+  --beamer-block-body:  #e7efeb;   /* block body */
+  --beamer-alert:       #ea3323;   /* \alert{} red */
+  --beamer-ball:        radial-gradient(circle at 35% 30%, #a6dcb0 0%, #3a8347 48%, #133019 100%);
+  --beamer-shadow:      1px 2px 4px rgba(0, 0, 0, 0.32);
+  --beamer-font:        "CM Sans", "CMU Sans Serif", "Latin Modern Sans", Helvetica, Arial, sans-serif;
+
+  /* The canvases read these from :root */
+  --color-accent:      #296235;
+  --color-accent-dark: #194123;
+  --color-accent-soft: #dcebe1;
+  --color-border:      #cbd8cf;
+  --sim-measure:       #ea3323;
+  --sim-second:        #1f56b8;   /* blue, as for states in the slide figures */
+  --sim-sphere-light:  rgba(255, 255, 255, 0.6);
+  --sim-sphere-shade:  rgba(196, 223, 204, 0.6);
+  --sim-sphere-line:   #3a8347;
+  --sim-disc-fill:     #e8f2ec;   /* the fill of the Bloch ball in the slides */
+}
+
+/* The site navigation and footer keep the site colors */
+#site-nav, #site-footer {
+  --color-accent:      #1f3a5f;
+  --color-accent-dark: #14263f;
+  --color-accent-soft: #eef2f6;
+  --color-border:      #e3e0d8;
+}
+
+body { background: #fff; }   /* slides are white; the header keeps its own background */
+
+main {
+  --font-heading: var(--beamer-font);
+  font-family: var(--beamer-font);
+  font-size: 1.04em;
+  background: #fff;
+}
+
+/* ---- Frame title: dark navigation strip + green title bar ---- */
+main .hero {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 0.8rem;
+  border-bottom: 0;
+  background: var(--beamer-title);
+  box-shadow: 0 4px 5px -1px rgba(0, 0, 0, 0.28);
+}
+main .hero .container { display: flex; flex-direction: column; }
+main .hero .breadcrumb {
+  margin: 0 0 0.7rem;
+  padding: 0.3rem 0;
+  font-size: 0.8rem;
+  color: #fff;
+  background: var(--beamer-dark);
+  box-shadow: 0 0 0 100vmax var(--beamer-dark);   /* full-width strip */
+  clip-path: inset(0 -100vmax);
+}
+main .hero .breadcrumb a { color: #9fbca7; border-bottom: 0; }
+main .hero .breadcrumb a:hover { color: #fff; }
+main .hero h1 {
+  order: 1;
+  margin: 0;
+  max-width: none;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #fff;
+}
+main .hero .hero-eyebrow {   /* shown under the title, like \framesubtitle */
+  order: 2;
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #d4e7d8;
+}
+
+main .section { padding-top: 1.8rem; }
+
+/* ---- Panels as Beamer blocks ---- */
+main .sim-panel {
+  background: var(--beamer-block-body);
+  border: 0;
+  border-radius: 5px;
+  box-shadow: var(--beamer-shadow);
+}
+main .sim-panel > h2:first-child {
+  margin: -1rem -1.1rem 0.75rem;
+  padding: 0.28rem 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #fff;
+  background: var(--beamer-block-title);
+  border-radius: 5px 5px 0 0;
+}
+main .sim-panel h3 { font-weight: 700; font-size: 0.98rem; color: var(--beamer-block-title); }
+main .sim-card { border: 0; background: #fff; }
+
+main .sim-btn, main .sim-select, main .sim-number { background: #fff; border-color: #a9c2b0; }
+main .sim-btn:hover { border-color: var(--beamer-block-title); }
+main .sim-btn[aria-pressed="true"] { background: var(--beamer-block-title); border-color: var(--beamer-block-title); color: #fff; }
+main .sim-btn.primary { background: var(--beamer-title); border-color: var(--beamer-title); }
+main .sim-btn.primary:hover { background: var(--beamer-block-title); }
+
+main .bar { background: #fff; box-shadow: inset 0 0 0 1px #c5d5ca; }
+main .stage { background: #fff; }
+
+/* ---- Question box as a "Question" block ---- */
+main .sim-question {
+  padding: 0;
+  overflow: hidden;
+  color: var(--color-text);
+  background: #fff;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: var(--beamer-shadow);
+}
+main .sim-question strong {
+  margin: 0;
+  padding: 0.22rem 0.8rem;
+  font-weight: 400;
+  color: #fff;
+  background: var(--beamer-block-title);
+}
+main .sim-question p { padding: 0.5rem 0.8rem 0.6rem; }
+
+/* ---- Exercises numbered with Beamer balls ---- */
+main .sim-try ol { list-style: none; counter-reset: ex; padding-left: 0; }
+main .sim-try li { counter-increment: ex; position: relative; padding-left: 1.95rem; }
+main .sim-try li::before {
+  content: counter(ex);
+  position: absolute; left: 0; top: 0.12rem;
+  width: 1.3rem; height: 1.3rem;
+  border-radius: 50%;
+  background: var(--beamer-ball);
+  box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 0.72rem; line-height: 1.3rem; text-align: center;
+}
+
+/* ---- Alert red for errors and losses ---- */
+main .sim-bad, main .sim-loss, main .rounds-table td.err, main .key-line .err { color: var(--beamer-alert); }
+
+/* ---- Simulation list: cards as blocks, numbers as balls ---- */
+main a.sim-entry {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0 1.1rem 1rem;
+  background: var(--beamer-block-body);
+  border: 0;
+  border-radius: 5px;
+  box-shadow: var(--beamer-shadow);
+}
+main a.sim-entry h3 {
+  order: -1;
+  margin: 0 -1.1rem 0.9rem;
+  padding: 0.3rem 1.1rem 0.3rem 2.55rem;
+  font-weight: 400;
+  color: #fff;
+  background: var(--beamer-block-title);
+  border-radius: 5px 5px 0 0;
+}
+main a.sim-entry:hover h3 { color: #fff; background: var(--beamer-title); }
+main a.sim-entry p { color: var(--color-text); }
+main .sim-entry-num {
+  position: absolute; left: 0.8rem; top: 0.42rem;
+  width: 1.3rem; height: 1.3rem;
+  margin: 0; padding: 0;
+  border: 0; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #cfe8d4 45%, #7fae8a 100%);
+  color: var(--beamer-dark);
+  font-size: 0.72rem; line-height: 1.3rem; text-align: center;
+}
+main .sim-thumb [fill="#f2f0ea"] { fill: #fff; }
+main .sim-thumb circle[stroke="#5c6470"] { stroke: var(--sim-sphere-line); }
+main .sim-thumb [stroke="#1f3a5f"] { stroke: var(--color-accent); }
+main .sim-thumb [fill="#1f3a5f"] { fill: var(--color-accent); }
+main .sim-thumb [stroke="#b4532a"] { stroke: var(--sim-measure); }
+main .sim-thumb [fill="#b4532a"] { fill: var(--sim-measure); }
+
+/* ---- Footline: the three-part bar at the bottom of every slide ---- */
+.beamer-footline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #fff;
+}
+.beamer-footline span { padding: 0.05rem 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.beamer-footline span:nth-child(1) { background: var(--beamer-block-title); text-align: center; }
+.beamer-footline span:nth-child(2) { background: var(--beamer-dark); text-align: center; }
+.beamer-footline span:nth-child(3) { background: var(--beamer-title); text-align: right; }
+
+@media (max-width: 640px) {
+  main .hero h1 { font-size: 1.8rem; }
+  .beamer-footline { grid-template-columns: 1fr 1fr; }
+  .beamer-footline span:nth-child(1) { display: none; }
+}

@@ -91,6 +91,8 @@
   var cssVars = getComputedStyle(document.documentElement);
   function cssColor(name, fallback) { return cssVars.getPropertyValue(name).trim() || fallback; }
   var C = {
+    discFill: cssColor('--sim-disc-fill', 'transparent'),
+    sphereLine: cssColor('--sim-sphere-line', '#5c6470'),
     state: cssColor('--color-accent', '#1f3a5f'),
     meas: cssColor('--sim-measure', '#b4532a'),
     text: cssColor('--color-text', '#202329'),
@@ -118,8 +120,8 @@
   function draw() {
     if (!R) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2;
-    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = C.discFill; ctx.strokeStyle = C.sphereLine; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
     ctx.strokeStyle = C.border; ctx.lineWidth = 1;
     [[0, 1], [1, 0]].forEach(function (v) {
       var p = pt(v, 1.08), q = pt([-v[0], -v[1]], 1.08);

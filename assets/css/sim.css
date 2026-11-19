@@ -6,6 +6,11 @@
 :root {
   --sim-measure: #b4532a;   /* measurement axis, outcome bars */
   --sim-question: #1f56b8;  /* in-page questions */
+  --sim-second: #1f7a6d;    /* second test state (channels) */
+  --sim-sphere-light: rgba(255,255,255,0.55);   /* Bloch sphere shading: highlight */
+  --sim-sphere-shade: rgba(226,222,212,0.55);   /* Bloch sphere shading: edge */
+  --sim-sphere-line: #5c6470;                   /* Bloch sphere outline */
+  --sim-disc-fill: transparent;                 /* X-Z cross-sections of the sphere */
 }
 
 .container.sim-container { max-width: 1120px; }
@@ -224,6 +229,7 @@
   border-radius: var(--radius); cursor: pointer;
 }
 .stage .del:hover { color: #b42318; border-color: #b42318; }
+.stage-def { font-size: 0.9rem; margin: 0.1rem 0 0.4rem; overflow-x: auto; position: relative; }
 .stage-kraus { font-size: 0.86rem; margin-top: 0.3rem; overflow-x: auto; position: relative; }
 
 /* Breadcrumb trail above the page title */
